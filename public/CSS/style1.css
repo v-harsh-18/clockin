@@ -1,0 +1,20 @@
+nav{
+    height: auto;
+}
+
+.logo{
+    display: inline-block;
+}
+
+.logo2{
+ 
+    height: 100px;
+    padding-left: 15px;
+
+}
+
+.button{
+    float: right;
+    margin-right: 2rem;
+    margin-top: 1.5rem;
+}
