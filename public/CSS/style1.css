@@ -18,3 +18,51 @@ nav{
     margin-right: 2rem;
     margin-top: 1.5rem;
 }
+
+.logopop{
+
+    margin-top: 3rem;
+    margin-left: 5rem;
+}
+
+.video{
+    display:block;
+    margin:0rem 5rem;
+}
+.panel1{
+
+    height: 400px;
+    background-image: linear-gradient(to right, rgb(194, 248, 44), #93e9be );
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    padding-left: 20px;
+    
+}
+.panel1text{
+    display: flex;
+    flex-direction: row;
+
+}
+p{
+    display: inline-block;
+    font-family: 'Ubuntu', sans-serif;
+    color: white;
+    margin-left: 50px;
+    margin-top: 120px;
+}
+.p1{
+    
+    font-size: 70px;
+    line-height:0px;
+}
+.p2{
+    font-size: 100px;
+    line-height:65px;
+}
+.p3{
+    font-size: 80px;
+    line-height:65px;
+}
+
+
