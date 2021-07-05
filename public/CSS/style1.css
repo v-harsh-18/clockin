@@ -1,5 +1,8 @@
 nav{
     height: auto;
+    position: fixed;
+    width: 100%;
+    margin-top: 0px;
 }
 
 .logo{
@@ -19,16 +22,30 @@ nav{
     margin-top: 1.5rem;
 }
 
-.logopop{
-
-    margin-top: 3rem;
-    margin-left: 5rem;
-}
-
 .video{
-    display:block;
-    margin:0rem 5rem;
+    height: 350px;
+    width: 400px;
+    margin-top: 20px;
+    margin-left: auto;
 }
+
+.name{
+    margin: auto;
+    padding: 20px;
+}
+
+.heading{
+    font-size: 200px;
+    margin-left: 20px;
+    display: inline-block;
+    color: black;
+}
+
+.row{
+    margin-top: 0px;
+    padding-top: 130px;
+}
+
 .panel1{
 
     height: 400px;
@@ -37,6 +54,7 @@ nav{
     align-items: center;
     justify-items: center;
     padding-left: 20px;
+    margin-top: 55px;
     
 }
 .panel1text{
@@ -44,7 +62,7 @@ nav{
     flex-direction: row;
 
 }
-p{
+.para1{
     display: inline-block;
     font-family: 'Ubuntu', sans-serif;
     color: white;
@@ -64,5 +82,7 @@ p{
     font-size: 80px;
     line-height:65px;
 }
+
+
 
 
