@@ -23,20 +23,25 @@ nav{
 }
 
 .video{
-    height: 350px;
-    width: 400px;
-    margin-top: 20px;
+    height: 20rem;
+    width: 23rem;
+    margin-top: 3rem;
     margin-left: auto;
+}
+
+.vidpanel{
+    align-items: center;
 }
 
 .name{
     margin: auto;
-    padding: 20px;
+    padding-left: 0rem;
+    padding-top: 4rem;
 }
 
 .heading{
-    font-size: 200px;
-    margin-left: 20px;
+    font-size: 13rem;
+    margin-left: 4rem;
     display: inline-block;
     color: black;
 }
@@ -48,7 +53,7 @@ nav{
 
 .panel1{
 
-    height: 400px;
+    height: 500px;
     background-image: linear-gradient(to right, rgb(194, 248, 44), #93e9be );
     display: flex;
     align-items: center;
@@ -66,7 +71,7 @@ nav{
     display: inline-block;
     font-family: 'Ubuntu', sans-serif;
     color: white;
-    margin-left: 50px;
+    margin-left: 4rem;
     margin-top: 120px;
 }
 .p1{
@@ -83,6 +88,58 @@ nav{
     line-height:65px;
 }
 
+.features{
+    padding: 1% 15%;
+    margin-top: 2rem;
+
+}
+
+.rowf{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.icon{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.ftext{
+    font-family: 'Ubuntu', sans-serif;
+    text-align: center;
+    margin-top: 5%;
+    font-weight: bold;
+}
+
+.icon2{
+    margin-top: 6%;
+}
+
+.ftexting{
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+    color: grey;
+}
+
+.panel3{
+    background-image: url('../img/two.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 26rem;
+    display:flex;
+    align-items: center;
+
+}
 
 
+.p3text{
+    padding:2rem;
+     color: white;
+     font-size: 4rem;
+     font-family: 'Ubuntu';
 
+}
