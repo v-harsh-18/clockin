@@ -161,7 +161,7 @@ nav{
 }
 
 footer{
-    height:auto;
+    height:4rem;
     width:100%;
     margin:0px;
 
@@ -189,4 +189,9 @@ footer{
     padding-left:1rem;
     font-weight: bold;
  
+}
+.copyright{
+    padding: 1rem;
+    margin-top: 1rem;
+    margin-left: 1.5rem;
 }
