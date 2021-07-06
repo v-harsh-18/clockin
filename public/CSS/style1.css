@@ -55,6 +55,9 @@ nav{
 
     height: 500px;
     background-image: linear-gradient(to right, rgb(194, 248, 44), #93e9be );
+    background-image: url('../img/two.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     align-items: center;
     justify-items: center;
@@ -88,10 +91,9 @@ nav{
     line-height:65px;
 }
 
-.features{
-    padding: 1% 15%;
-    margin-top: 2rem;
-
+.features {
+    padding: 5% 15%;
+    margin-top: 0rem;
 }
 
 .rowf{
@@ -126,20 +128,65 @@ nav{
 }
 
 .panel3{
-    background-image: url('../img/two.jpg');
+    background-image: url('../img/gif1.gif');
     background-repeat: no-repeat;
     background-size: cover;
-    height: 26rem;
+    height: 30rem;
     display:flex;
-    align-items: center;
+    align-items:flex-end;
+    flex-direction:row;
 
 }
 
+.ptext{
+    display: flex;
+    flex-direction: column-reverse;
+}
 
-.p3text{
-    padding:2rem;
+
+.p3text1{
+    padding:1rem;
      color: white;
-     font-size: 4rem;
+     font-size: 3.5rem;
      font-family: 'Ubuntu';
 
+}
+.p3text2{
+    padding:1rem;
+     color: white;
+     font-size: 1.5rem;
+     font-family: 'Ubuntu';
+     padding-top: 0;
+
+}
+
+footer{
+    height:auto;
+    width:100%;
+    margin:0px;
+
+}
+
+.foot{
+    margin-top:0.3rem;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-foot{
+ 
+        height: 60px;
+        padding-left: 15px;
+        padding-right:2rem;
+}
+
+.text-foot{
+    padding:.1rem;
+    color: black;
+    font-size: 1.5rem;
+    font-family: 'Ubuntu';
+    padding-left:1rem;
+    font-weight: bold;
+ 
 }
