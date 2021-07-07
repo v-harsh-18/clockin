@@ -54,7 +54,6 @@ nav{
 .panel1{
 
     height: 500px;
-    background-image: linear-gradient(to right, rgb(194, 248, 44), #93e9be );
     background-image: url('../img/two.jpg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -128,13 +127,13 @@ nav{
 }
 
 .panel3{
-    background-image: url('../img/gif1.gif');
+    background-image: url('../img/one.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     height: 30rem;
     display:flex;
     align-items:flex-end;
-    flex-direction:row;
+    flex-direction:row-reverse;
 
 }
 
