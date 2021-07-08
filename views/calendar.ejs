@@ -27,11 +27,16 @@
 <body>
 
     <%-include("components/navbar")-%>
+    
+    <div class="box">
 
-    <div class="calendar" id="calendar"></div>
-
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js'></script>
-    <script src="calendar.js"></script>
+        <div class="calendar" id="calendar"></div>
+        <div class="sidecal" id="calendar2"></div>
+        
+    </div>
+        <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js'></script>
+        <script src="JS/calendar.js"></script>
+        <script src="JS/sidecalendar.js"></script>
     
     
 </body>
