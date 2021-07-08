@@ -109,5 +109,5 @@ app.get("/calendar", function (req, res) {
 
 
 app.listen(3003, () => {
-    console.log('CONNECTION ESTABLISHED ON PORT 3000')
+    console.log('CONNECTION ESTABLISHED ON PORT 3003')
 });
