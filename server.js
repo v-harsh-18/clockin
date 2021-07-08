@@ -85,22 +85,23 @@ app.get("/auth/google/clockin",
 
 app.get("/calendar", function (req, res) {
 
-    if (req.isAuthenticated()) {
+    // if (req.isAuthenticated()) {
 
 
-        User.find({ "secret": { $ne: null } }, function (err, foundUsers) {
-            if (err) {
-                console.log(err);
-            } else {
-                if (foundUsers) {
-                    res.render("calendar", { usersWithSecrets: foundUsers });
-                }
-            }
-        });
-    }
-    else {
-        res.redirect('/');
-    }
+    //     User.find({ "secret": { $ne: null } }, function (err, foundUsers) {
+    //         if (err) {
+    //             console.log(err);
+    //         } else {
+    //             if (foundUsers) {
+                    // res.render("calendar", { usersWithSecrets: foundUsers });
+                    res.render("calendar");
+    //             }
+    //         }
+    //     });
+    // }
+    // else {
+    //     res.redirect('/');
+    // }
 });
 
 
