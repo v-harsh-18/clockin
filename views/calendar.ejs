@@ -29,20 +29,33 @@
 
     <%-include("components/navbar")-%>
 
-        <div class="box">
+    <div class="box">
 
-            <div class="calendar" id="calendar"></div>
-            <div id='app' class="sidecal">
-                <!-- <v-calendar></v-calendar> -->
-                <v-date-picker v-model='date' 
-                :value="null"
-                color="teal"
-                />
-                <v-calendar is-expanded />
-              </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-4">
+                    <div id='app' class="sidecal">
+                        <!-- <v-calendar></v-calendar> -->
+                        <v-date-picker v-model='date' :value="null" color="teal" />
+                        <v-calendar is-expanded />
 
-            
+                    </div>
+                    <div class="button">
+                        <a class="btn-dark btn btn-lg" role="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                              </svg>
+                            Create
+                        </a>
+                    </div>
+                </div>
+                <div class="calendar col-8" id="calendar"></div>
+            </div>
         </div>
+
+
+    </div>
+
         <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js'></script>
         <script src="JS/calendar.js"></script>
         <script src="JS/sidecalendar.js"></script>

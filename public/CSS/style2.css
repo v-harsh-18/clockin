@@ -32,7 +32,8 @@ nav{
     max-width: 1100px;
     margin-top: 40px;
     width: 65%;
-    margin-right: 2rem;
+    margin-right: 1rem;
+    
     
 
   }
@@ -40,21 +41,20 @@ nav{
   .box{
       display:flex;
       flex-direction: row-reverse;
-      width: auto;
+      width: 100%;
     }
 
     #app{
             max-width: 1100px;
-            margin-top: 9.0rem;
-            width: 25%;
-            margin-right:3.5rem;
-            height:72vh;
+            margin-top: 9rem;
+            margin:  9rem 1rem 3rem 2rem ;
+            width: 85%;
+            height:47vh;
     }
     .sidecal{
-        margin: 0;
-    padding: 0;
     font-family:Open sans;
     font-size: 5px;
+    
     }
 
 
