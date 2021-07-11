@@ -28,6 +28,8 @@
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",
     "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^6.1.0"
+    "passport-local-mongoose": "^6.1.0",
+    "v-calendar": "^2.3.0",
+    "vue": "^2.6.14"
   }
 }
