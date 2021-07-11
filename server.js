@@ -32,7 +32,9 @@ mongoose.set("useCreateIndex", true);
 
 const userSchema = new mongoose.Schema({
     googleId: String,
-    username: String
+    username: String,
+    picture: String,
+    fname: String,
 });
 
 userSchema.plugin(passportLocalMongoose);
@@ -61,7 +63,7 @@ passport.use(new GoogleStrategy({
     function (accessToken, refreshToken, profile, cb) {
         console.log(profile);
 
-        User.findOrCreate({ username: profile.emails[0].value, googleId: profile.id, }, function (err, user) {
+        User.findOrCreate({ username: profile.emails[0].value, googleId: profile.id, picture: profile.photos[0].value, fname: profile.displayName }, function (err, user) {
             return cb(err, user);
         });
     }
