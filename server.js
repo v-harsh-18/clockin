@@ -41,6 +41,7 @@ userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(findOrCreate);
 
 const User = new mongoose.model("User", userSchema);
+var currentid = "";
 
 passport.use(User.createStrategy());
 
@@ -62,6 +63,7 @@ passport.use(new GoogleStrategy({
 },
     function (accessToken, refreshToken, profile, cb) {
         console.log(profile);
+        currentid = profile.id;
 
         User.findOrCreate({ username: profile.emails[0].value, googleId: profile.id, picture: profile.photos[0].value, fname: profile.displayName }, function (err, user) {
             return cb(err, user);
@@ -85,25 +87,38 @@ app.get("/auth/google/clockin",
         res.redirect("/calendar");
     });
 
+
 app.get("/calendar", function (req, res) {
 
-    // if (req.isAuthenticated()) {
 
 
-    //     User.find({ "secret": { $ne: null } }, function (err, foundUsers) {
+    //     User.findOne({ "secret": { $ne: null } }, function (err, foundUsers) {
     //         if (err) {
     //             console.log(err);
     //         } else {
     //             if (foundUsers) {
-                    // res.render("calendar", { usersWithSecrets: foundUsers });
-                    res.render("calendar");
+    // res.render("calendar", { usersWithSecrets: foundUsers });
+    // res.render("calendar");
     //             }
     //         }
     //     });
     // }
-    // else {
-    //     res.redirect('/');
-    // }
+
+    if (req.isAuthenticated()) {
+        User.findOne({ googleId: currentid }, function (err, foundUser) {
+            if (err) {
+                console.log(err);
+            } else {
+                if (foundUser) {
+                    foundUser.toObject();
+                    res.render("calendar", { idpic: foundUser.picture, idname: foundUser.fname });
+                }
+            }
+        });
+    }
+    else {
+    res.redirect('/');
+    }
 });
 
 
