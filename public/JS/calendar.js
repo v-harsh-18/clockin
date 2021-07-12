@@ -9,13 +9,13 @@ document.addEventListener('DOMContentLoaded', function() {
       headerToolbar: {
         left: 'prev,next today',
         center: 'title',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+        right: 'dayGridMonth,timeGridWeek,listWeek'
       },
       dateClick: function(info) {
-        alert('clicked ' + info.dateStr);
+        // alert('clicked ' + info.dateStr);
       },
       select: function(info) {
-        alert('selected ' + info.startStr + ' to ' + info.endStr);
+        // alert('selected ' + info.startStr + ' to ' + info.endStr);
       }
     });
   

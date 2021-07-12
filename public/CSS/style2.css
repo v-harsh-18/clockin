@@ -79,7 +79,23 @@ nav{
         font-size: x-large;
     }
 
-
+    .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
+        color: #fff;
+        background-color:#3b3e48;
+        border-color:#3b3e48;
+    }
+    .btn-primary {
+        color: #fff;
+        background-color: #93e9be;
+        border-color: #93e9be;
+    }
+    tbody, td, tfoot, th, thead, tr {
+        border-color: inherit;
+        border-style: solid;
+        border-width: 0;
+        background-color: #ffffff;
+    }
+    
 
   
 
