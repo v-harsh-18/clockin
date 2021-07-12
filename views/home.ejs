@@ -100,13 +100,14 @@
     </div>
 
     </div>
-
+       
     <div class="panel3">
         <div class="p3text">
             <div class="p3text1">Timely Reminders</div>
             <div class="p3text2">Have too many meetings to keep track?<br>ClockIn has got your back</div>
 
         </div>
+
 
     </div>
     <footer class="shadow foot">
@@ -120,8 +121,28 @@
 
     <script src="JS/darkmode.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script>
+  function addDarkmodeWidget() {
+    new Darkmode().showWidget();
+  }
+  window.addEventListener('load', addDarkmodeWidget);
+
+  const options = {
+ 
+  time: '0.1s', // default: '0.3s'
+ 
+  label: '🌓', // default: ''
+  
+}
+
+const darkmode = new Darkmode(options);
+darkmode.showWidget();
+</script>
 </body>
+
+
 
 </html>
