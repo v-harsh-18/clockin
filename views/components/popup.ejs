@@ -24,30 +24,38 @@
             </div>
             <div class="row date">
               <label for="validationDefault01" class="form-label">Date</label>
-              <input type="date" class="form-control" id="validationDefault01" required>
+              <div class="input-group">
+                  <input type="date" class="form-control" id="validationDefault01" required>
+              </div>
             </div>
             <div class="row time">
               <label for="validationDefault02" class="form-label">Time</label>
-              <input type="time" class="form-control" id="validationDefault02" required>
+              <div class="input-group">
+                <input type="time" class="form-control input-group" id="validationDefault02" required>
+              </div>
             </div>
             <div class="row Mlink">
               <label for="validationDefault03" class="form-label">Meeting Link</label>
-              <input type="text" class="form-control" id="validationDefault03">
+              <div class="input-group">
+                <input type="text" class="form-control input-group" id="validationDefault03">
+              </div>
             </div>
             <div class="row repeat">
               <label for="validationDefault04" class="form-label">Repeat</label>
-              <select class="form-select" id="validationDefault04" required>
-                <option selected disabled value="">Choose...</option>
-                <option>None</option>
-                <option>Daily</option>
-                <option>Weekly</option>
-                <option>Monthly</option>
-                <option>Yearly</option>
-              </select>
+              <div class="input-group">
+                <select class="form-select input-group" id="validationDefault04" required>
+                    <option selected disabled value="">Choose...</option>
+                    <option>None</option>
+                    <option>Daily</option>
+                    <option>Weekly</option>
+                    <option>Monthly</option>
+                    <option>Yearly</option>
+                  </select> 
+              </div>
             </div>
-            <div class="row">
-              <button class="btn btn-primary" type="submit">Submit form</button>
-            </div>
+            
+              <button class="btn btn-primary submit" type="submit">Save</button>
+            
           </form>
       </div>
     </div>
