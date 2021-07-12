@@ -96,6 +96,10 @@ nav{
         background-color: #ffffff;
     }
     
+    .darkmode-layer, .darkmode-toggle {
+        z-index: 500;
+      }
+      
 
   
 
