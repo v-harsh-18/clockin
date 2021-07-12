@@ -46,15 +46,20 @@ nav{
 
     #app{
             max-width: 1100px;
-            margin-top: 9rem;
-            margin:  9rem 1rem 3rem 2rem ;
+            margin:  5rem 1rem 3rem 2rem ;
             width: 85%;
-            height:47vh;
+            height:40vh;
     }
     .sidecal{
     font-family:Open sans;
     font-size: 5px;
     
+    }
+
+    .button{
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
     }
 
 
