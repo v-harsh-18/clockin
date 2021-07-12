@@ -111,7 +111,7 @@ app.get("/calendar", function (req, res) {
             } else {
                 if (foundUser) {
                     foundUser.toObject();
-                    console.log("heloooooooooo" + foundUser.fname)
+                    // console.log("heloooooooooo" + foundUser.fname)
                     res.render("calendar", { idpic: foundUser.picture, idname: foundUser.fname });
                 }
             }
