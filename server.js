@@ -9,6 +9,7 @@ const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
+const MongoClient = require("mongodb").MongoClient;
 
 const app = express();
 
@@ -122,8 +123,32 @@ app.get("/calendar", function (req, res) {
     }
 });
 
+// app.post('/remindar', function(req, res){
+//     console.log(req.body);
+// });
 
-
+MongoClient.connect("mongodb+srv://ClockIn:vahi_wahi@cluster0.ipxbr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", 
+{ useUnifiedTopology: true},
+function(err, client){
+    if(err) return console.error(err)
+    console.log('Connected to Database');
+    const db = client.db('ClockIn-remindar');
+    const remindarsCollection = db.collection('remindars');
+    app.post('/remindar', (req, res) => {
+        remindarsCollection.insertOne(req.body)
+          .then(result => {
+            console.log(result)
+          })
+          .catch(error => console.error(error))
+      })
+      app.post('/remindars', (req, res) => {
+        remindarsCollection.insertOne(req.body)
+          .then(result => {
+            res.redirect('/')
+          })
+          .catch(error => console.error(error))
+      })
+})
 
 
 app.listen(3003, () => {

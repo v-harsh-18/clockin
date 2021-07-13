@@ -15,35 +15,35 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form action="/remindar" method="POST">
             <div class="row Mname">
               <label for="validationDefaultUsername" class="form-label">Meeting name</label>
               <div class="input-group">
-                <input type="text" class="form-control" id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" required>
+                <input type="text" placeholder="title" name="title" class="form-control" id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" required>
               </div>
             </div>
             <div class="row date">
               <label for="validationDefault01" class="form-label">Date</label>
               <div class="input-group">
-                  <input type="date" class="form-control" id="validationDefault01" required>
+                  <input type="date" placeholder="date" name="date" class="form-control" id="validationDefault01" required>
               </div>
             </div>
             <div class="row time">
               <label for="validationDefault02" class="form-label">Time</label>
               <div class="input-group">
-                <input type="time" class="form-control input-group" id="validationDefault02" required>
+                <input type="time" placeholder="time" name="time" class="form-control input-group" id="validationDefault02" required>
               </div>
             </div>
             <div class="row Mlink">
               <label for="validationDefault03" class="form-label">Meeting Link</label>
               <div class="input-group">
-                <input type="text" class="form-control input-group" id="validationDefault03">
+                <input type="text" placeholder="link" name="link" class="form-control input-group" id="validationDefault03">
               </div>
             </div>
             <div class="row repeat">
               <label for="validationDefault04" class="form-label">Repeat</label>
               <div class="input-group">
-                <select class="form-select input-group" id="validationDefault04" required>
+                <select class="form-select input-group" placeholder="repeat" name="repeat" id="validationDefault04" required>
                     <option selected disabled value="">Choose...</option>
                     <option>None</option>
                     <option>Daily</option>
