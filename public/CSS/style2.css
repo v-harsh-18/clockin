@@ -22,6 +22,8 @@ nav{
     height: 47px;
     margin-right: -0.5rem;
     margin-top: 1px;
+    width: 20rem;
+    padding-left: 1rem;
 }
 
 .sign_out{
