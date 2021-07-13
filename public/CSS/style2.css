@@ -95,6 +95,15 @@ nav{
         border-width: 0;
         background-color: #ffffff;
     }
+
+    .darkmode--activated .profileimg {
+        mix-blend-mode: difference;
+        height: 4rem;
+        border-radius: 2rem;
+        margin-bottom: 1rem;
+        
+      }
+    
     
     .darkmode-layer, .darkmode-toggle {
         z-index: 500;
