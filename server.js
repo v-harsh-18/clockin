@@ -47,7 +47,7 @@ const userSchema = new mongoose.Schema({
     fname: String,
     events:[eventSchema]
     
-});
+}, {timestamps: true});
 
 userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(findOrCreate);
@@ -134,21 +134,25 @@ app.get("/calendar", function (req, res) {
     }
 });
 
-app.post("/event" , function(req,res){
+app.post("/calendar" , function(req,res){
     User.findOne({ googleId: currentid }, function (err, foundUser) {
         if (err) {
             console.log(err);
         } else {
             if (foundUser) {
-                foundUser.events[0].title=req.body.title;
-                // foundUser.title=req.body.title;
-                // foundUser.title=req.body.title;
-                // foundUser.title=req.body.title;
-                // foundUser.title=req.body.title;
+                foundUser.event[0].title = req.body.title;
+                foundUser.save(function(){
+                res.redirect("/calendar");
+                });
                 
             }
         }
     });
+
+    
+    
+    
+    
                 
 });
 
