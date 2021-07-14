@@ -195,33 +195,5 @@ footer{
     margin-left: 1.5rem;
 }
 
-.darkmode--activated .panel3 {
-    mix-blend-mode: difference;
-    background-image: url('../img/one.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 30rem;
-    display:flex;
-    align-items:flex-end;
-    flex-direction:row-reverse;
-  }
 
-  .darkmode--activated .panel1{
-    mix-blend-mode: difference;
-    height: 500px;
-    background-image: url('../img/two.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-items: center;
-    padding-left: 20px;
-    margin-top: 55px;
-    
-
-  }
-  .darkmode-layer, .darkmode-toggle {
-    z-index: 500;
-  }
-  
   

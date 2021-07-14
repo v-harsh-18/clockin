@@ -28,14 +28,25 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb://localhost:27017/userDB", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb://localhost:27017/UserDB", { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set("useCreateIndex", true);
+
+const eventSchema = new mongoose.Schema({
+    title: String,
+    date: Date,
+    time: String,
+    link:String,
+    repeat: String
+
+})
 
 const userSchema = new mongoose.Schema({
     googleId: String,
     username: String,
     picture: String,
     fname: String,
+    events:[eventSchema]
+    
 });
 
 userSchema.plugin(passportLocalMongoose);
@@ -123,32 +134,50 @@ app.get("/calendar", function (req, res) {
     }
 });
 
+app.post("/event" , function(req,res){
+    User.findOne({ googleId: currentid }, function (err, foundUser) {
+        if (err) {
+            console.log(err);
+        } else {
+            if (foundUser) {
+                foundUser.events[0].title=req.body.title;
+                // foundUser.title=req.body.title;
+                // foundUser.title=req.body.title;
+                // foundUser.title=req.body.title;
+                // foundUser.title=req.body.title;
+                
+            }
+        }
+    });
+                
+});
+
 // app.post('/remindar', function(req, res){
 //     console.log(req.body);
 // });
 
-MongoClient.connect("mongodb+srv://ClockIn:vahi_wahi@cluster0.ipxbr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", 
-{ useUnifiedTopology: true},
-function(err, client){
-    if(err) return console.error(err)
-    console.log('Connected to Database');
-    const db = client.db('ClockIn-remindar');
-    const remindarsCollection = db.collection('remindars');
-    app.post('/remindar', (req, res) => {
-        remindarsCollection.insertOne(req.body)
-          .then(result => {
-            console.log(result)
-          })
-          .catch(error => console.error(error))
-      })
-      app.post('/remindars', (req, res) => {
-        remindarsCollection.insertOne(req.body)
-          .then(result => {
-            res.redirect('/')
-          })
-          .catch(error => console.error(error))
-      })
-})
+// MongoClient.connect("mongodb+srv://ClockIn:vahi_wahi@cluster0.xpnz4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", 
+// { useUnifiedTopology: true},
+// function(err, client){
+//     if(err) return console.error(err)
+//     console.log('Connected to Database');
+//     const db = client.db('Calendar');
+//     const reminderCollection = db.collection('reminder');
+//     app.post('/reminder', (req, res) => {
+//         reminderCollection.insertOne(req.body)
+//           .then(result => {
+//             console.log(result)
+//           })
+//           .catch(error => console.error(error))
+//       })
+//       app.post('/reminder', (req, res) => {
+//         reminderCollection.insertOne(req.body)
+//           .then(result => {
+//             res.redirect('/')
+//           })
+//           .catch(error => console.error(error))
+//       })
+// })
 
 
 app.listen(3003, () => {
