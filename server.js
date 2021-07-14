@@ -31,7 +31,7 @@ app.use(passport.session());
 mongoose.connect("mongodb://localhost:27017/UserDB", { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set("useCreateIndex", true);
 
-const eventSchema = new mongoose.Schema({
+const eventsSchema = new mongoose.Schema({
     title: String,
     date: Date,
     time: String,
@@ -40,19 +40,22 @@ const eventSchema = new mongoose.Schema({
 
 })
 
+const Event = new mongoose.model("Event", eventsSchema)
+
 const userSchema = new mongoose.Schema({
     googleId: String,
     username: String,
     picture: String,
     fname: String,
-    events:[eventSchema]
+    events:[eventsSchema]
     
 }, {timestamps: true});
 
 userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(findOrCreate);
-
 const User = new mongoose.model("User", userSchema);
+
+
 var currentid = "";
 
 passport.use(User.createStrategy());
@@ -101,9 +104,6 @@ app.get("/auth/google/clockin",
 
 
 app.get("/calendar", function (req, res) {
-
-
-
     //     User.findOne({ "secret": { $ne: null } }, function (err, foundUsers) {
     //         if (err) {
     //             console.log(err);
@@ -123,7 +123,6 @@ app.get("/calendar", function (req, res) {
             } else {
                 if (foundUser) {
                     foundUser.toObject();
-                    // console.log("heloooooooooo" + foundUser.fname)
                     res.render("calendar", { idpic: foundUser.picture, idname: foundUser.fname });
                 }
             }
@@ -134,54 +133,28 @@ app.get("/calendar", function (req, res) {
     }
 });
 
-app.post("/calendar" , function(req,res){
-    User.findOne({ googleId: currentid }, function (err, foundUser) {
-        if (err) {
-            console.log(err);
-        } else {
-            if (foundUser) {
-                foundUser.event[0].title = req.body.title;
-                foundUser.save(function(){
-                res.redirect("/calendar");
-                });
-                
-            }
-        }
-    });
+app.post("/calendar", function(req, res){
 
+    const title = req.body.title;
+    const date = req.body.date;
+    const time = req.body.time;
+    const link = req.body.link;
+    const repeat = req.body.repeat;
+    const event = new Event({
+        title: title,
+        date: date,
+        time: time,
+        link: link,
+        repeat: repeat,
+    })
+  
     
-    
-    
-    
-                
-});
-
-// app.post('/remindar', function(req, res){
-//     console.log(req.body);
-// });
-
-// MongoClient.connect("mongodb+srv://ClockIn:vahi_wahi@cluster0.xpnz4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", 
-// { useUnifiedTopology: true},
-// function(err, client){
-//     if(err) return console.error(err)
-//     console.log('Connected to Database');
-//     const db = client.db('Calendar');
-//     const reminderCollection = db.collection('reminder');
-//     app.post('/reminder', (req, res) => {
-//         reminderCollection.insertOne(req.body)
-//           .then(result => {
-//             console.log(result)
-//           })
-//           .catch(error => console.error(error))
-//       })
-//       app.post('/reminder', (req, res) => {
-//         reminderCollection.insertOne(req.body)
-//           .then(result => {
-//             res.redirect('/')
-//           })
-//           .catch(error => console.error(error))
-//       })
-// })
+      User.findOne({ googleId: currentid }, function(err, foundUser){
+        foundUser.events.push(event);
+        foundUser.save();
+        res.redirect("/calendar");
+      })
+  });
 
 
 app.listen(3003, () => {
