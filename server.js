@@ -32,8 +32,9 @@ mongoose.connect("mongodb://localhost:27017/UserDB", { useNewUrlParser: true, us
 mongoose.set("useCreateIndex", true);
 
 const eventsSchema = new mongoose.Schema({
+    _id: String,
     title: String,
-    date: Date,
+    start: String,
     startTime: String,
     link:String,
     repeat: String
@@ -49,7 +50,7 @@ const userSchema = new mongoose.Schema({
     fname: String,
     events:[eventsSchema]
     
-}, {timestamps: true});
+}, /*{timestamps: true}*/);
 
 userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(findOrCreate);
@@ -136,13 +137,13 @@ app.get("/calendar", function (req, res) {
 app.post("/calendar", function(req, res){
 
     const title = req.body.title;
-    const date = req.body.date;
+    const start = "2021-07-15";
     const startTime = req.body.time;
     const link = req.body.link;
     const repeat = req.body.repeat;
     const event = new Event({
         title: title,
-        date: date,
+        start: start,
         startTime: startTime,
         link: link,
         repeat: repeat,
