@@ -12,7 +12,15 @@ document.addEventListener('DOMContentLoaded', function() {
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,listWeek'
       },
-      events: x ,
+      events : [ 
+        {
+            "title" : "zxz",
+            "date" : "2021-07-15",
+            "time" : "17:32",
+            "link" : "ccbb",
+            "repeat" : "Weekly"
+        }
+    ],
       dateClick: function(info) {
 
       },

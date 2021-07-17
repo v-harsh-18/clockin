@@ -33,9 +33,10 @@ mongoose.set("useCreateIndex", true);
 
 const eventsSchema = new mongoose.Schema({
     _id: String,
+ 
     title: String,
-    start: String,
-    startTime: String,
+    date: String,
+    time: String,
     link:String,
     repeat: String
 
@@ -123,6 +124,7 @@ app.get("/calendar", function (req, res) {
                 console.log(err);
             } else {
                 if (foundUser) {
+                    console.log(foundUser._id.toString());
                     foundUser.toObject();
                     res.render("calendar", { idpic: foundUser.picture, idname: foundUser.fname, events: foundUser.events });
                 }
@@ -137,16 +139,20 @@ app.get("/calendar", function (req, res) {
 app.post("/calendar", function(req, res){
 
     const title = req.body.title;
-    const start = "2021-07-15";
-    const startTime = req.body.time;
+    const date = req.body.date;
+    const time = req.body.time;
     const link = req.body.link;
     const repeat = req.body.repeat;
+    const id= new Date;
+  
+
     const event = new Event({
         title: title,
-        start: start,
-        startTime: startTime,
+        date: date,
+        time: time,
         link: link,
         repeat: repeat,
+        _id:id,
     })
   
     
