@@ -19,13 +19,20 @@
             <div class="row Mname">
               <label for="validationDefaultUsername" class="form-label">Meeting name</label>
               <div class="input-group">
-                <input type="text" placeholder="title" name="title" class="form-control" id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" required>
+                <input type="text" placeholder="title" name="title" class="form-control" id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" 
+                required>
               </div>
             </div>
             <div class="row date">
-              <label for="validationDefault01" class="form-label">Date</label>
+              <label for="validationDefault01" class="form-label">Start Date</label>
               <div class="input-group">
-                  <input type="date" placeholder="date" name="date" class="form-control" id="validationDefault01" required>
+                  <input type="date" placeholder="start date" name="date" class="form-control" id="validationDefault01" required>
+              </div>
+            </div>
+            <div class="row date">
+              <label for="validationDefault01" class="form-label">End Date</label>
+              <div class="input-group">
+                  <input type="date" placeholder="end date" name="until" class="form-control" id="validationDefault01">
               </div>
             </div>
             <div class="row time">
@@ -45,11 +52,11 @@
               <div class="input-group">
                 <select class="form-select input-group" placeholder="repeat" name="repeat" id="validationDefault04" required>
                     <option selected disabled value="">Choose...</option>
-                    <option>None</option>
-                    <option>Daily</option>
-                    <option>Weekly</option>
-                    <option>Monthly</option>
-                    <option>Yearly</option>
+                    <option value="none" name="none">None</option>
+                    <option name="daily" value="daily">Daily</option>
+                    <option name="weekly" value="weekly">Weekly</option>
+                    <option name="monthly" value="monthly">Monthly</option>
+                    <option name="yearly" value="yearly">Yearly</option>
                   </select> 
               </div>
             </div>

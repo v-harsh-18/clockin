@@ -31,15 +31,23 @@ app.use(passport.session());
 mongoose.connect("mongodb://localhost:27017/UserDB", { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set("useCreateIndex", true);
 
+
+
 const eventsSchema = new mongoose.Schema({
     _id: String,
  
     title: String,
+    rrule:{
+        dtstart: String,
+        freq : String,
+        until: String 
+    },
     date: String,
     time: String,
     link:String,
-    repeat: String,
     allDay: Boolean,
+    startRecur: String,
+    endRecur: String,
 
 
 })
@@ -128,7 +136,7 @@ app.get("/calendar", function (req, res) {
                 if (foundUser) {
 
                     foundUser.toObject();
-                    res.render("calendar", { idpic: foundUser.picture, idname: foundUser.fname, events: foundUser.events });
+                    res.render("calendar", { idpic: foundUser.picture, idname: foundUser.fname, events: foundUser.events, });
                 }
             }
         });
@@ -144,8 +152,17 @@ app.post("/calendar", function(req, res){
     const date = req.body.date;
     const time = req.body.time;
     const link = req.body.link;
-    const repeat = req.body.repeat;
     const id= new Date;
+    let dtstart;
+    let freq;
+    let until;
+    if(req.body.repeat!=="none")
+    {
+    dtstart= req.body.date;
+    freq= req.body.repeat;
+    until=req.body.until;
+
+    }
   
 
     const event = new Event({
@@ -153,9 +170,14 @@ app.post("/calendar", function(req, res){
         date: date,
         time: time,
         link: link,
-        repeat: repeat,
         _id:id,
-        allDay:false
+        allDay:false,
+        rrule:
+        {dtstart:dtstart,
+            freq:freq,
+            until:until
+        },
+
     })
   
     
