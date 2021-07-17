@@ -38,7 +38,9 @@ const eventsSchema = new mongoose.Schema({
     date: String,
     time: String,
     link:String,
-    repeat: String
+    repeat: String,
+    allDay: Boolean,
+
 
 })
 
@@ -124,7 +126,7 @@ app.get("/calendar", function (req, res) {
                 console.log(err);
             } else {
                 if (foundUser) {
-                    console.log(foundUser._id.toString());
+
                     foundUser.toObject();
                     res.render("calendar", { idpic: foundUser.picture, idname: foundUser.fname, events: foundUser.events });
                 }
@@ -153,6 +155,7 @@ app.post("/calendar", function(req, res){
         link: link,
         repeat: repeat,
         _id:id,
+        allDay:false
     })
   
     
