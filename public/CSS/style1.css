@@ -1,8 +1,17 @@
+.bg-body{
+    background-color: #fff;
+    background-color: var(--navigationbg)!important;
+}
+
+body{
+    background-color: var(--navigationbg)!important;
+}
 nav{
     height: auto;
     position: fixed;
     width: 100%;
     margin-top: 0px;
+    
 }
 
 .logo{
@@ -43,7 +52,11 @@ nav{
     font-size: 13rem;
     margin-left: 4rem;
     display: inline-block;
-    color: black;
+    color:var(--clocktext)!important;
+}
+
+.In{
+    color: var(--intext)!important;
 }
 
 .row{
@@ -107,6 +120,10 @@ nav{
     justify-content: center;
     align-items: center;
 
+}
+
+.panellogos{
+    fill: var(--panellogos);
 }
 
 .ftext{
@@ -193,6 +210,28 @@ footer{
     padding: 1rem;
     margin-top: 1rem;
     margin-left: 1.5rem;
+}
+
+:root{
+    --black: #000000;
+    --white: #ffffff;
+    --minty: #93e9be;
+    --nminty: #6c1641;
+    --grey: #212529;
+     
+}
+
+.light-theme{
+    --navigationbg: var(--white);
+    --intext: var(--minty);
+    --clocktext: var(--black);
+    --panellogos: var(--minty);
+}
+
+.dark-theme{
+    --navigationbg: var(--black);
+    --intext: var(--nminty);
+    --clocktext: var(--white);
 }
 
 
