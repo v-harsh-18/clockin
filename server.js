@@ -10,8 +10,10 @@ const passportLocalMongoose = require("passport-local-mongoose");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
 const MongoClient = require("mongodb").MongoClient;
+const nodemailer = require('nodemailer');
 
 const app = express();
+
 
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
@@ -83,6 +85,8 @@ passport.deserializeUser(function (id, done) {
     });
 });
 
+let email="";
+
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
@@ -92,6 +96,7 @@ passport.use(new GoogleStrategy({
     function (accessToken, refreshToken, profile, cb) {
         console.log(profile);
         currentid = profile.id;
+        email=profile.emails[0].value;
 
         User.findOrCreate({ username: profile.emails[0].value, googleId: profile.id, picture: profile.photos[0].value, fname: profile.displayName }, function (err, user) {
             return cb(err, user);
@@ -165,6 +170,57 @@ app.post("/calendar", function(req, res){
     until=req.body.until;
 
     }
+
+    const output = `
+    <h3>You have a new event scheduled !!</h3>
+    <h2 style="font-size:2em">Event Details</h2>
+   
+      <p style="font-size:1.2em"><b>Description:</b> ${req.body.title}</p>
+      <p style="font-size:1.2em"><b>Date:</b> ${req.body.date}</p>
+      <p style="font-size:1.2em"><b>Time:</b> ${req.body.time}</p>
+      
+   
+      <p>You will receive a reminder 15 minutes before the scheduled event.</p>
+      <p>This is an auto-generated mail. Please do not reply.</p>
+
+
+    
+  `;
+
+  // create reusable transporter object using the default SMTP transport
+  let transporter = nodemailer.createTransport({
+      service:'gmail',
+
+    port: 587,
+    secure: false, // true for 465, false for other ports
+    auth: {
+        user: 'clockin.india@gmail.com', // generated ethereal user
+        pass: 'vahi_wahi'  // generated ethereal password
+    },
+    tls:{
+      rejectUnauthorized:false
+    }
+  });
+
+  // setup email data with unicode symbols
+  let mailOptions = {
+      from: '"ClockIn India" <clockin.india@gmail.com>', // sender address
+      to: email, 
+      subject: 'Node Contact Request', // Subject line
+      text: 'Hello world?', // plain text body
+      html: output // html body
+  };
+
+  // send mail with defined transport object
+  transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+          return console.log(error);
+      }
+      console.log('Message sent: %s', info.messageId);   
+      console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+
+      res.render('contact', {msg:'Email has been sent'});
+  });
   
 
     const event = new Event({
