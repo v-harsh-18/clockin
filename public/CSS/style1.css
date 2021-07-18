@@ -11,7 +11,6 @@ nav{
     position: fixed;
     width: 100%;
     margin-top: 0px;
-    
 }
 
 .logo{
@@ -131,6 +130,7 @@ nav{
     text-align: center;
     margin-top: 5%;
     font-weight: bold;
+    color: var(--ftext);
 }
 
 .icon2{
@@ -199,7 +199,7 @@ footer{
 
 .text-foot{
     padding:.1rem;
-    color: black;
+    color: var(--copyright);
     font-size: 1.5rem;
     font-family: 'Ubuntu';
     padding-left:1rem;
@@ -210,6 +210,7 @@ footer{
     padding: 1rem;
     margin-top: 1rem;
     margin-left: 1.5rem;
+    color: var(--copyright);
 }
 
 :root{
@@ -218,6 +219,7 @@ footer{
     --minty: #93e9be;
     --nminty: #6c1641;
     --grey: #212529;
+    --lightgrey: grey ;
      
 }
 
@@ -226,6 +228,8 @@ footer{
     --intext: var(--minty);
     --clocktext: var(--black);
     --panellogos: var(--minty);
+    --ftext: var(--black);
+    --copyright: var(--black);
 }
 
 .dark-theme{
@@ -233,6 +237,8 @@ footer{
     --intext: var(--nminty);
     --clocktext: var(--white);
     --panellogos: var(--nminty);
+    --ftext: var(--white);
+    --copyright: var(--lightgrey);
 }
 
 

@@ -1,3 +1,11 @@
+.bg-body{
+    background-color: #fff;
+    background-color: var(--navigationbg)!important;
+}
+
+body{
+    background-color: var(--navigationbg)!important;
+}
 nav{
     height: auto;
     width: 100%;
@@ -97,8 +105,18 @@ nav{
     }
     .btn-primary {
         color: #fff;
-        background-color: #93e9be;
-        border-color: #93e9be;
+        background-color: var(--buttons);
+        border-color: var(--buttons);
+    }
+
+    .btn-primary:hover{
+        background-color: var(--hbuttons);
+        border-color: var(--hbuttons);
+    }
+
+    .btn-primary:active{
+        background-color: var(--hbuttons);
+        border-color: var(--hbuttons);
     }
     tbody, td, tfoot, th, thead, tr {
         border-color: inherit;
@@ -116,4 +134,46 @@ nav{
         border: 4px solid #418966;
         border-radius: 4px;
         border-radius: calc(var(--fc-daygrid-event-dot-width,8px)/ 2);
+    }
+
+    .fc .fc-daygrid-day-frame {
+        position: relative;
+        min-height: 100%;
+        background-color: var(--grid);
+    }
+
+    .fc-scrollgrid-sync-inner{
+        background-color: var(--grid);
+        color: ;
+    }
+
+    .vc-container.vc-is-expanded {
+        min-width: 100%;
+        background-color: var(--grid);
+    }
+
+    :root{
+        --black: #000000;
+        --white: #ffffff;
+        --minty: #93e9be;
+        --nminty: #6c1641;
+        --grey: #212529;
+        --lightgrey: grey ;
+        --minty2: #78c2ad;
+        --nminty2: #873d52;
+        --light: #312f30;
+    }
+
+    .light-theme{
+        --navigationbg: var(--white);
+        --buttons: var(--minty);
+        --hbuttons: var(--minty2);
+        --grid: var(--white);
+    }
+    
+    .dark-theme{
+        --navigationbg: var(--black);
+        --buttons: var(--nminty);
+        --hbuttons: var(--nminty2);
+        --grid:var(--grey);
     }
