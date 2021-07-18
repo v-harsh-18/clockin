@@ -232,6 +232,7 @@ footer{
     --navigationbg: var(--black);
     --intext: var(--nminty);
     --clocktext: var(--white);
+    --panellogos: var(--nminty);
 }
 
 
