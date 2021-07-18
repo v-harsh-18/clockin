@@ -1,5 +1,6 @@
 //jshint esversion:6
 require('dotenv').config();
+const cron = require('node-cron');
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
@@ -152,6 +153,8 @@ app.get("/calendar", function (req, res) {
     }
 });
 
+let tm="";
+
 app.post("/calendar", function(req, res){
 
     const title = req.body.title;
@@ -169,49 +172,63 @@ app.post("/calendar", function(req, res){
     freq= req.body.repeat;
     until=req.body.until;
 
-    }
+    };
+    tm=req.body.time;
+    let min="";
+    let hr="";
+    let mnth="";
+    let wk="";
+
+    hr=tm[0]+tm[1];
+    min=tm[3]+tm[4];
+    console.log(hr);
+    dt=req.body.date[8]+req.body.date[9];
+    mnth=req.body.date[3]+req.body.date[4];
+
+    wk=id.getDay();
+
 
     const output = `
     <h3>You have a new event scheduled !!</h3>
     <h2 style="font-size:2em">Event Details</h2>
-   
       <p style="font-size:1.2em"><b>Description:</b> ${req.body.title}</p>
       <p style="font-size:1.2em"><b>Date:</b> ${req.body.date}</p>
       <p style="font-size:1.2em"><b>Time:</b> ${req.body.time}</p>
-      
-   
       <p>You will receive a reminder 15 minutes before the scheduled event.</p>
       <p>This is an auto-generated mail. Please do not reply.</p>
-
-
-    
   `;
 
-  // create reusable transporter object using the default SMTP transport
+  const remind = `
+    <h3>Remind !!</h3>
+    <h2 style="font-size:2em">Event Details</h2>
+      <p style="font-size:1.2em"><b>Description:</b> ${req.body.title}</p>
+      <p style="font-size:1.2em"><b>Date:</b> ${req.body.date}</p>
+      <p style="font-size:1.2em"><b>Time:</b> ${req.body.time}</p>
+      <p>This is an auto-generated mail. Please do not reply.</p>    
+  `;
+
   let transporter = nodemailer.createTransport({
       service:'gmail',
 
     port: 587,
-    secure: false, // true for 465, false for other ports
+    secure: false, 
     auth: {
-        user: 'clockin.india@gmail.com', // generated ethereal user
-        pass: 'vahi_wahi'  // generated ethereal password
+        user: 'clockin.india@gmail.com',
+        pass: 'vahi_wahi' 
     },
     tls:{
       rejectUnauthorized:false
     }
   });
 
-  // setup email data with unicode symbols
   let mailOptions = {
-      from: '"ClockIn India" <clockin.india@gmail.com>', // sender address
+      from: '"ClockIn India" <clockin.india@gmail.com>', 
       to: email, 
-      subject: 'Node Contact Request', // Subject line
-      text: 'Hello world?', // plain text body
-      html: output // html body
+      subject: 'Node Contact Request',
+      text: 'Hello world?',
+      html: output
   };
 
-  // send mail with defined transport object
   transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
           return console.log(error);
@@ -238,13 +255,35 @@ app.post("/calendar", function(req, res){
         },
 
     })
-  
+
     
       User.findOne({ googleId: currentid }, function(err, foundUser){
         foundUser.events.push(event);
         foundUser.save();
         res.redirect("/calendar");
-      })
+      });
+
+       cron.schedule('* ' + min +" " +hr+" " +dt + " " +mnth+" " +'*' , function() {
+   
+        let mailOptions = {
+            from: '"ClockIn India" <clockin.india@gmail.com>', 
+            to: email, 
+            subject: 'Node Contact Request',
+            text: 'Hello world?', 
+            html: remind, 
+        };
+      
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                return console.log(error);
+            }
+            console.log('Message sent: %s', info.messageId);   
+            console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+      
+            res.render('contact', {msg:'Email has been sent'});
+        });
+    });
+
   });
 
 
