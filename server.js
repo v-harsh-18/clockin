@@ -184,7 +184,7 @@ app.post("/calendar", function(req, res){
     min=tm[3]+tm[4];
     console.log(hr);
     dt=req.body.date[8]+req.body.date[9];
-    mnth=req.body.date[3]+req.body.date[4];
+    mnth=req.body.date[5]+req.body.date[6];
 
     wk=id.getDay();
 
@@ -195,12 +195,12 @@ app.post("/calendar", function(req, res){
       <p style="font-size:1.2em"><b>Description:</b> ${req.body.title}</p>
       <p style="font-size:1.2em"><b>Date:</b> ${req.body.date}</p>
       <p style="font-size:1.2em"><b>Time:</b> ${req.body.time}</p>
-      <p>You will receive a reminder 15 minutes before the scheduled event.</p>
+      <p>You will receive a reminder before the start of the scheduled event.</p>
       <p>This is an auto-generated mail. Please do not reply.</p>
   `;
 
   const remind = `
-    <h3>Remind !!</h3>
+    <h3>Reminder !!</h3>
     <h2 style="font-size:2em">Event Details</h2>
       <p style="font-size:1.2em"><b>Description:</b> ${req.body.title}</p>
       <p style="font-size:1.2em"><b>Date:</b> ${req.body.date}</p>
@@ -225,7 +225,7 @@ app.post("/calendar", function(req, res){
   let mailOptions = {
       from: '"ClockIn India" <clockin.india@gmail.com>', 
       to: email, 
-      subject: 'Node Contact Request',
+      subject: 'Event Created',
       text: 'Hello world?',
       html: output
   };
@@ -265,12 +265,12 @@ app.post("/calendar", function(req, res){
         res.redirect("/calendar");
       });
 
-       cron.schedule('* ' + min +" " +hr+" " +dt + " " +mnth+" " +'*' , function() {
+       cron.schedule(min +" " +hr+" " +dt + " " +mnth+" " +'*' , function() {
    
         let mailOptions = {
             from: '"ClockIn India" <clockin.india@gmail.com>', 
             to: email, 
-            subject: 'Node Contact Request',
+            subject: 'Reminder',
             text: 'Hello world?', 
             html: remind, 
         };
