@@ -1,6 +1,6 @@
 <nav class="shadow bg-body rounded">
     <div class="logo">
-        <img class="logo2" src="img/logo2.png">
+        <img class="logo2" id = "logo2" src="img/logo2.png">
     </div>
 
     <div class="sign_out">
@@ -15,3 +15,15 @@
     </div>
 
 </nav>
+
+<script>
+    function changeImage() {
+        var image = document.getElementById('logo2');
+        if (image.src.match("img/logo2.png")) {
+            image.src = "img/one.jpg";
+        }
+        else {
+            image.src = "img/logo2.png";
+        }
+    }
+</script>

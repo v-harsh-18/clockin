@@ -38,8 +38,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-3 vidpanel">
-                <video width="900" height="400" autoplay muted class="video">
-                    <source src="video/logoFinal.mp4">
+                <video width="900" height="400" autoplay muted class="video" id="video-dark" src="video/logoFinal.mp4">
                 </video>
 
             </div>
@@ -112,14 +111,14 @@
     </div>
     <footer class="shadow foot">
         <div class="logo">
-            <img class="logo-foot" src="img/logo2.png">
+            <img class="logo-foot" id="logo-foot" src="img/logo2.png">
         </div>
         <div class="text-foot">Try ClockIn now</div>
         <p class="copyright">&copy; copyright 2021 ClockIn</p>
         <label class="switch">
             <i class="fas fa-adjust"></i>
             <div>
-              <input type="checkbox" />
+              <input type="checkbox" onclick="changeImage()"  />
               <span class="slider round"></span>
             </div>
         </label>
@@ -136,10 +135,36 @@
         themeSwitch.addEventListener('change', () => {
             document.body.classList.toggle('dark-theme');
         });
-
-        
-        
     </script>
+
+<script>
+    function changeImage() {
+        var image = document.getElementById('logo2');
+        if (image.src.match("img/logo2.png")) {
+            image.src = "img/one.jpg";
+        }
+        else {
+            image.src = "img/logo2.png";
+        }
+
+        var image = document.getElementById('logo-foot');
+        if (image.src.match("img/logo2.png")) {
+            image.src = "img/one.jpg";
+        }
+        else {
+            image.src = "img/logo2.png";
+        }
+
+        var video = document.getElementById('video-dark');
+        if (video.src.match("video/logoFinal.mp4")) {
+            video.src = "video/laptop.mp4";
+        }
+        else {
+            video.src = "video/logoFinal.mp4";
+        }
+    }
+</script>
+
    
 
 </body>
