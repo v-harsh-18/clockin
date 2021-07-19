@@ -163,28 +163,8 @@ nav{
         color: var(--fctext);
     }
 
-    .fc .fc-scroller-liquid-absolute{
-        background-color: var(--grid);
-    }
-
     .fc .fc-toolbar-title{
         color: var(--fcmonth);
-    }
-
-    .fc .fc-timegrid-slot-minor{
-        background-color: var(--grid);
-    }
-
-    .fc .fc-timegrid-slot{
-        background-color: var(--grid);
-    }
-
-    .fc .fc-list-empty {
-        background-color: var(--grid);
-    }
-
-    .fc .fc-scroller-liquid{
-        background-color: var(--grid);
     }
 
     .fc-h-event .fc-event-title-container{
@@ -193,18 +173,30 @@ nav{
         border: var(--eventc);
     }
 
+    .fc .fc-list-day-cushion, .fc .fc-list-table td , .table-bordered thead th, .table-bordered thead td , .fc .fc-scroller-liquid-absolute , .fc-timegrid-slot-minor , .fc .fc-timegrid-slot ,.fc .fc-list-empty , .fc-scroller-liquid , .fc .fc-timegrid-axis-frame{
+        background-color: var(--grid);
+    }
+
+    .modal-content{
+        background-color: var(--formbg);
+    }
+
+    .form-label , .modal-title{
+        color: var(--formtext);
+    }
+
     :root{
         --black: #000000;
         --white: #ffffff;
         --minty: #93e9be;
         --nminty: #6c1641;
-        --grey: #2d3748;
         --lightgrey: #e2e8f0 ;
         --minty2: #78c2ad;
         --nminty2: #873d52;
         --fcgrey: #888888;
         --eblue: #9099aa;
         --leblue: #2477f2;
+        --formgrey: #36404d;
     } 
 
      .light-theme{
@@ -217,17 +209,21 @@ nav{
         --fcmonth: var(--fcmgrey);
         --eventc: var(--leblue);
         --eventt: var(--white);
+        --formbg: var(--white);
+        --formtext: var(--black);
     }
     
     .dark-theme{
         --navigationbg: var(--black);
         --buttons: var(--nminty);
         --hbuttons: var(--nminty2);
-        --grid:var(--grey);
+        --grid:var(--formgrey);
         --vctext: var(--lightgrey);
         --fcdate: var(--lightgrey);
         --fcmonth: var(--lightgrey);
         --eventc: var(--eblue);
         --eventt: var(--black);
+        --formbg: var(--formgrey);
+        --formtext: var(--lightgrey);
     }
     
