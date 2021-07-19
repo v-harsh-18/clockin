@@ -63,7 +63,8 @@ const userSchema = new mongoose.Schema({
     username: String,
     picture: String,
     fname: String,
-    events:[eventsSchema]
+    events:[eventsSchema],
+    colors: Array
     
 }, /*{timestamps: true}*/);
 
@@ -143,7 +144,7 @@ app.get("/calendar", function (req, res) {
                 if (foundUser) {
 
                     foundUser.toObject();
-                    res.render("calendar", { idpic: foundUser.picture, idname: foundUser.fname, events: foundUser.events, });
+                    res.render("calendar", { idpic: foundUser.picture, idname: foundUser.fname, events: foundUser.events, colors: foundUser.colors});
                 }
             }
         });
@@ -259,6 +260,7 @@ app.post("/calendar", function(req, res){
     
       User.findOne({ googleId: currentid }, function(err, foundUser){
         foundUser.events.push(event);
+        foundUser.colors.push(`'`+date.toString()+`'`);
         foundUser.save();
         res.redirect("/calendar");
       });
