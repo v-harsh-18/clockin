@@ -43,8 +43,11 @@
                         </div>
                         <div id='app' class="sidecal">
                             
-                            <v-date-picker v-model='date' :value="null" color="teal" />
-                            <v-calendar is-expanded />
+                            <!-- <v-date-picker v-model='date' :value="null" color="teal" /> -->
+                            <v-calendar is-expanded  
+                            :columns="$screens(1)"
+                            :from-date="new Date()"
+                            :attributes="attributes" />
 
                         </div>
 
