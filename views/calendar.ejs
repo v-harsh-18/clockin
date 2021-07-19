@@ -54,16 +54,50 @@
                         <%-include("components/popup")-%>
                         <p id="yy" style="display:none"><%= events %></p>
                        
-
-
-
                     </div>
                     <div class="calendar col-8" id="calendar"></div>
                 </div>
             </div>
-
-
         </div>
+        <div style="display:none">
+            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1" id="new">
+            </button>
+        </div>
+        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        
+            <div class="modal-dialog">
+        
+                <div class="modal-content">
+        
+                    <div class="modal-header">
+        
+                        <h5 class="modal-title" id="exampleModalLabel">Event Details</h5>
+        
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        
+                    </div>
+        
+                    <div class="modal-body">
+        
+                        <form action="/delete" method="POST">
+        
+        
+        
+                            <div id="mtitle"></div>
+        
+                            <div id="mdate"></div>
+        
+                            <div id="mtime"></div>
+        
+                            <div id="freq"></div>
+                            <button class="btn btn-primary submit" type="submit">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
         <label class="switch">
             <i class="fas fa-adjust"></i>
             <div>
@@ -89,22 +123,13 @@
                         right: 'dayGridMonth,timeGridWeek,listWeek'
                     },
                     dayMaxEvents: true,
-                    eventClick: function(info) {
-      var eventObj = info.event;
+                    eventClick: function (info) {
+                        var eventObj = info.event;
 
-      if (eventObj.url) {
-        alert(
-          'Clicked ' + eventObj.title + '.\n' +
-          'Will open ' + eventObj.url + ' in a new tab'
-        );
-
-        window.open(eventObj.url);
-
-        info.jsEvent.preventDefault(); // prevents browser from following link in current tab.
-      } else {
-        alert('Clicked ' + eventObj.title);
-      }
-    },
+                        document.getElementById('new').click();
+                        document.getElementById('mtitle').innerHTML = "Event Title: " + eventObj.title;
+                        document.getElementById('mdate').innerHTML = "Event Date: " + eventObj.id;
+                    },
                     events: reminder,
         
         
