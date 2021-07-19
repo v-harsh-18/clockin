@@ -21,7 +21,13 @@ nav{
  
     height: 100px;
     padding-left: 15px;
+}
 
+.logo2-darkt{
+    height: 100px;
+    padding-left: 15px;
+    -webkit-filter: invert(1);
+    filter: invert(1);
 }
 
 .button{

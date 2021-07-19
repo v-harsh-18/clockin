@@ -20,7 +20,7 @@
 <body class="light-theme">
     <nav class="shadow bg-body rounded">
         <div class="logo">
-            <img class="logo2" src="img/logo2.png">
+            <img id="logo2" class="logo2" src="img/logo2.png">
         </div>
         
         <div class="button">
@@ -136,6 +136,13 @@
         themeSwitch.addEventListener('change', () => {
             document.body.classList.toggle('dark-theme');
         });
+
+        themeSwitch.addEventListener('change', () => {
+            document.getElementsById('#logo2').classList.toggle('logo2-darkt');
+        });
+
+        
+        
     </script>
    
 

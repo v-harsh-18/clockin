@@ -144,7 +144,6 @@ nav{
 
     .fc-scrollgrid-sync-inner{
         background-color: var(--grid);
-        color: ;
     }
 
     .vc-container.vc-is-expanded {
@@ -152,23 +151,72 @@ nav{
         background-color: var(--grid);
     }
 
+    .vc-title[data-v-74ad501d]{
+        color: var(--vctext)!important;
+    }
+
+    .vc-day-content[data-v-4420d078]{
+        color: var(--vctext)!important;
+    }
+
+    .fc-theme-bootstrap a:not([href]){
+        color: var(--fctext);
+    }
+
+    .fc .fc-scroller-liquid-absolute{
+        background-color: var(--grid);
+    }
+
+    .fc .fc-toolbar-title{
+        color: var(--fcmonth);
+    }
+
+    .fc .fc-timegrid-slot-minor{
+        background-color: var(--grid);
+    }
+
+    .fc .fc-timegrid-slot{
+        background-color: var(--grid);
+    }
+
+    .fc .fc-list-empty {
+        background-color: var(--grid);
+    }
+
+    .fc .fc-scroller-liquid{
+        background-color: var(--grid);
+    }
+
+    .fc-h-event .fc-event-title-container{
+        background-color: var(--eventc);
+        color: var(--eventt);
+        border: var(--eventc);
+    }
+
     :root{
         --black: #000000;
         --white: #ffffff;
         --minty: #93e9be;
         --nminty: #6c1641;
-        --grey: #212529;
-        --lightgrey: grey ;
+        --grey: #2d3748;
+        --lightgrey: #e2e8f0 ;
         --minty2: #78c2ad;
         --nminty2: #873d52;
-        --light: #312f30;
-    }
+        --fcgrey: #888888;
+        --eblue: #9099aa;
+        --leblue: #2477f2;
+    } 
 
-    .light-theme{
+     .light-theme{
         --navigationbg: var(--white);
         --buttons: var(--minty);
         --hbuttons: var(--minty2);
         --grid: var(--white);
+        --vctext: var(--black);
+        --fcdate: var(--fcgrey);
+        --fcmonth: var(--fcmgrey);
+        --eventc: var(--leblue);
+        --eventt: var(--white);
     }
     
     .dark-theme{
@@ -176,4 +224,10 @@ nav{
         --buttons: var(--nminty);
         --hbuttons: var(--nminty2);
         --grid:var(--grey);
+        --vctext: var(--lightgrey);
+        --fcdate: var(--lightgrey);
+        --fcmonth: var(--lightgrey);
+        --eventc: var(--eblue);
+        --eventt: var(--black);
     }
+    
