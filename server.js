@@ -323,7 +323,6 @@ app.post("/calendar", function(req, res){
             dte=vuser.start;
             dte=`'`+dte+`'`
             descp=vuser.description;
-            console.log(descp);
 
             if(descp==="none")
             {
