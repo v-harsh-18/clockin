@@ -108,9 +108,11 @@
         </div>
         </div>
 
+        <div class="blank" >
 
+        </div>
        
-        <footer class="shadow foot">
+        <footer class="fshadow foot">
             <div class="logo">
                 <img class="logo-foot" id="logo-foot" src="img/logo2.png">
             </div>
@@ -137,6 +139,8 @@
                         right: 'dayGridMonth,timeGridWeek,listWeek'
                     },
                     dayMaxEvents: true,
+                    showNonCurrentDates: false,
+                    fixedWeekCount: false,
                     eventClick: function (info) {
                         info.jsEvent.preventDefault();
                         var eventObj = info.event;
