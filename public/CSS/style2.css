@@ -11,6 +11,9 @@ nav{
     width: 100%;
     margin-top: 0px;
 }
+.shadow {
+    box-shadow: 0 .5rem 1rem var(--ldshadow)!important;
+}
 
 .logo{
     display: inline-block;
@@ -234,6 +237,9 @@ nav{
         --leblue: #2477f2;
         --formgrey: #36404d;
         --grey: grey;
+        --lsblack: rgba(0,0,0,0.15);
+        --dswhite:rgba(255, 245, 245, 0.15);
+         
     } 
 
      .light-theme{
@@ -249,6 +255,7 @@ nav{
         --formbg: var(--white);
         --formtext: var(--black);
         --copyright: var(--black);
+        --ldshadow: var(--lsblack);
     }
     
     
@@ -265,7 +272,7 @@ nav{
         --formbg: var(--formgrey);
         --formtext: var(--lightgrey);
         --copyright: var(--grey);
-
+        --ldshadow: var(--dswhite);
     }
     
     * {
