@@ -16,7 +16,10 @@
 }
 
 .position{
-    
+    position:fixed;
+    bottom: 1vh;
+    right:1rem;
+    z-index: 1000;
 }
 
 .darking{

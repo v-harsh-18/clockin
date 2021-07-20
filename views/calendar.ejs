@@ -52,6 +52,16 @@
                         </div>
 
                         <%-include("components/popup")-%>
+                        <div class="switch position" >
+                            <div>
+                             <input  type="checkbox" class="darking" id="checkbox" onclick="changeImage()">
+                             <label for="checkbox" class="label">
+                                <i class="fas fa-moon"></i>
+                                <i class="fas fa-sun"></i>
+                                <div class="ball"></div>
+                            </label>
+                           </div>
+                        </div>
                         
                     </div>
                     <div class="calendar col-8" id="calendar"></div>
@@ -99,14 +109,7 @@
         </div>
 
 
-        <div class="switch position" >
-            <input  type="checkbox" class="darking" id="checkbox" onclick="changeImage()">
-            <label for="checkbox" class="label">
-                <i class="fas fa-moon"></i>
-                <i class="fas fa-sun"></i>
-                <div class="ball"></div>
-            </label>
-        </div>
+       
         <footer class="shadow foot">
             <div class="logo">
                 <img class="logo-foot" id="logo-foot" src="img/logo2.png">
@@ -150,13 +153,13 @@
                     events: reminder,
 
 
-                    dateClick: function (info) {
-                        alert('You have a meet today !!!')
-                    },
-                    select: function (info) {
-                        // alert('selected ' + info.startStr + ' to ' + info.endStr);
+                    // dateClick: function (info) {
+                    //     alert('You have a meet today !!!')
+                    // },
+                    // select: function (info) {
+                    //     // alert('selected ' + info.startStr + ' to ' + info.endStr);
 
-                    },
+                    // },
 
 
                 });
@@ -176,14 +179,14 @@
             function changeImage() {
                 var image = document.getElementById('logo2');
                 if (image.src.match("img/logo2.png")) {
-                    image.src = "img/one.jpg";
+                    image.src = "img/logo-dark.jpeg";
                 }
                 else {
                     image.src = "img/logo2.png";
                 }
                 var image = document.getElementById('logo-foot');
         if (image.src.match("img/logo2.png")) {
-            image.src = "img/one.jpg";
+            image.src = "img/logo-dark.jpeg";
         }
         else {
             image.src = "img/logo2.png";
@@ -242,9 +245,6 @@
         </script>
 
         <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js'></script>
-
-        <script src="JS/sidecalendar.js"></script>
-        <script src="JS/popup.js"></script>
         <script type="text/javascript" charset="utf-8"></script>
         <script src='https://unpkg.com/vue/dist/vue.js'></script>
         <script src='https://unpkg.com/v-calendar'></script>
