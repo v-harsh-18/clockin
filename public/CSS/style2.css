@@ -151,6 +151,10 @@ nav{
         min-width: 100%;
         background-color: var(--grid);
     }
+    .fc-day-today > .fc-daygrid-day-frame{
+        background-color: var(--todayc);
+      }
+
 
     .vc-title[data-v-74ad501d]{
         color: var(--vctext)!important;
@@ -243,6 +247,8 @@ nav{
         --grey: grey;
         --lsblack: rgba(0,0,0,0.15);
         --dswhite:rgba(255, 245, 245, 0.15);
+        --ltoday: rgb(229, 255, 229);
+        --dtoday: #743353;
          
     } 
 
@@ -260,6 +266,7 @@ nav{
         --formtext: var(--black);
         --copyright: var(--black);
         --ldshadow: var(--lsblack);
+        --todayc: var(--ltoday);
     }
     
     
@@ -277,6 +284,7 @@ nav{
         --formtext: var(--lightgrey);
         --copyright: var(--grey);
         --ldshadow: var(--dswhite);
+        --todayc: var(--dtoday);
     }
     
     * {
