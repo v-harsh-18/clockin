@@ -327,23 +327,73 @@ app.post("/calendar", function(req, res){
 
             if(descp==="none")
             {
+                let count = 0;
+                for(let i=0; i<foundUser.nones.length; i++)
+                { 
+                    if(foundUser.nones[i]===dte){
+                        count=count+1;
+                    }
+                }
                 foundUser.nones.remove(dte);
+                for(let i=0; i<count-1; i++){
+                    foundUser.nones.push(dte);
+                }
             }
             else if(descp==="official")
             {
+                let count = 0;
+                for(let i=0; i<foundUser.officials.length; i++)
+                { 
+                    if(foundUser.officials[i]===dte){
+                        count=count+1;
+                    }
+                }
                 foundUser.officials.remove(dte);
+                for(let i=0; i<count-1; i++){
+                    foundUser.officials.push(dte);
+                }
             }
             else if(descp==="unofficial")
             {
+                let count = 0;
+                for(let i=0; i<foundUser.unofficials.length; i++)
+                { 
+                    if(foundUser.unofficials[i]===dte){
+                        count=count+1;
+                    }
+                }
                 foundUser.unofficials.remove(dte);
+                for(let i=0; i<count-1; i++){
+                    foundUser.unofficials.push(dte);
+                }
             }
             else if(descp==="bday")
             {
+                let count = 0;
+                for(let i=0; i<foundUser.bdays.length; i++)
+                { 
+                    if(foundUser.bdays[i]===dte){
+                        count=count+1;
+                    }
+                }
                 foundUser.bdays.remove(dte);
+                for(let i=0; i<count-1; i++){
+                    foundUser.bdays.push(dte);
+                }
             }
             else if(descp==="misc")
             {
+                let count = 0;
+                for(let i=0; i<foundUser.miscs.length; i++)
+                { 
+                    if(foundUser.miscs[i]===dte){
+                        count=count+1;
+                    }
+                }
                 foundUser.miscs.remove(dte);
+                for(let i=0; i<count-1; i++){
+                    foundUser.miscs.push(dte);
+                }
             }
 
         }
