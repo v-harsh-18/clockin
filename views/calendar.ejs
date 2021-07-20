@@ -18,7 +18,7 @@
     <link href="//cdn.jsdelivr.net/npm/bootswatch@5.0.2/dist/minty/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style2.css">
 
-
+<link rel="stylesheet" href="css/darkmode.css">
 
 
 
@@ -46,7 +46,8 @@
 
                             <!-- <v-date-picker v-model='date' :value="null" color="teal" /> -->
                             <v-calendar is-expanded :columns="$screens(1)" :from-date="new Date()"
-                                :attributes="attributes" />
+                                :attributes="attributes" 
+                                />
 
                         </div>
 
@@ -96,13 +97,22 @@
         </div>
         </div>
 
-        <label class="switch">
+        <!-- <label class="switch">
             <i class="fas fa-adjust"></i>
             <div>
                 <input class="darking" type="checkbox" />
                 <span class="slider round"></span>
             </div>
-        </label>
+        </label> -->
+
+        <div class="switch position" >
+            <input  type="checkbox" class="darking" id="checkbox">
+            <label for="checkbox" class="label">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
+                <div class="ball"></div>
+            </label>
+        </div>
 
         <script>
 
@@ -154,19 +164,43 @@
         </script>
         <script>
             document.addEventListener('DOMContentLoaded', function () {
-                let date = [<%-colors%>]
+                let None = [<%-nones%>]
+                let Official = [<%-officials%>]
+                let Unofficial = [<%-unofficials%>]
+                let Bday = [<%-bdays%>]
+                let Misc = [<%-miscs%>]
                 new Vue({
                     el: '#app',
                     data() {
                         return {
                             attributes: [
+                                // {
+                                //     key: 'today',
+                                //     highlight: {
+                                //         color: 'green',
+                                //         fillMode: 'outline',
+                                //     }, 
+                                //     dates: new Date(),
+                                // },
                                 {
-                                    dot: 'red',
-                                    dates: ['2021-01-07'],
+                                    dot: 'blue',
+                                    dates: None,
+                                },
+                                {
+                                    dot: 'pink',
+                                    dates: Misc,
                                 },
                                 {
                                     dot: 'yellow',
-                                    dates: date,
+                                    dates: Unofficial,
+                                },
+                                {
+                                    dot: 'green',
+                                    dates: Bday,
+                                },
+                                {
+                                    dot: 'red',
+                                    dates: Official,
                                 },
 
                             ],

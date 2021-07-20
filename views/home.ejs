@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="img/Copy of C.png"/>
     <link href='https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.1/css/all.css' rel='stylesheet'>
-
+<link rel="stylesheet" href="css/darkmode.css">
 </head>
 
 <body class="light-theme">
@@ -116,13 +116,21 @@
         </div>
         <div class="text-foot">Try ClockIn now</div>
         <p class="copyright">&copy; copyright 2021 ClockIn</p>
-        <label class="switch">
+        <!-- <label class="switch">
             <i class="fas fa-adjust"></i>
             <div>
               <input type="checkbox" />
               <span class="slider round"></span>
             </div>
-        </label>
+        </label> -->
+        <div class="switch position" >
+            <input  type="checkbox" class="darking" id="checkbox">
+            <label for="checkbox" class="label">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
+                <div class="ball"></div>
+            </label>
+        </div>
 
     </footer>
 
