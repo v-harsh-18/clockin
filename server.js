@@ -38,7 +38,7 @@ mongoose.set("useCreateIndex", true);
 
 const eventsSchema = new mongoose.Schema({
     _id: String,
- 
+    id: String,
     title: String,
     rrule:{
         dtstart: String,
@@ -252,6 +252,7 @@ app.post("/calendar", function(req, res){
         time: time,
         link: link,
         _id:id,
+        id:id,
         allDay:false,
         description:description,
         rrule:
@@ -301,6 +302,25 @@ app.post("/calendar", function(req, res){
     });
 
   });
+
+  app.post("/delete",function(req,res)
+{
+    const idi=req.body.idi;
+    User.findOne({googleId:currentid},function(err,foundUser)
+    {
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            foundUser.events.pull({id:idi});
+            foundUser.save();
+            res.redirect('/calendar');
+        }
+    })
+
+}); 
 
 
 app.listen(3003, () => {

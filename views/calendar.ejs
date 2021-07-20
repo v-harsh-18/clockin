@@ -89,7 +89,7 @@
                             <div id="mtime"></div>
         
                             <div id="freq"></div>
-                            <button class="btn btn-primary submit" type="submit">Delete</button>
+                            <button class="btn btn-primary submit" type="submit" id="idi" name="idi">Delete</button>
                         </form>
                     </div>
                 </div>
@@ -126,11 +126,13 @@
                     dayMaxEvents: true,
                     eventClick: function (info) {
                         var eventObj = info.event;
-
+                        console.log(eventObj.id);
                         document.getElementById('new').click();
                         document.getElementById('mtitle').innerHTML = "Event Title: " + eventObj.title;
                         document.getElementById('mdate').innerHTML = "Event Date: " + eventObj.id;
+                        document.getElementById('idi').setAttribute('value',eventObj.id);
                     },
+            
                     events: reminder,
 
 
