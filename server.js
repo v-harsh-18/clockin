@@ -64,7 +64,11 @@ const userSchema = new mongoose.Schema({
     picture: String,
     fname: String,
     events:[eventsSchema],
-    colors: Array
+    nones: Array,
+    officials: Array,
+    unofficials: Array,
+    bdays: Array,
+    miscs: Array
     
 }, /*{timestamps: true}*/);
 
@@ -144,7 +148,7 @@ app.get("/calendar", function (req, res) {
                 if (foundUser) {
 
                     foundUser.toObject();
-                    res.render("calendar", { idpic: foundUser.picture, idname: foundUser.fname, events: foundUser.events, colors: foundUser.colors});
+                    res.render("calendar", { idpic: foundUser.picture, idname: foundUser.fname, events: foundUser.events, nones: foundUser.nones, officials: foundUser.officials,unofficials: foundUser.unofficials, bdays: foundUser.bdays, miscs: foundUser.miscs});
                 }
             }
         });
@@ -167,6 +171,7 @@ app.post("/calendar", function(req, res){
     let freq;
     let until;
     const description= req.body.description;
+    const repeat = req.body.repeat;
     if(req.body.repeat!=="none")
     {
     dtstart= req.body.date;
@@ -260,7 +265,16 @@ app.post("/calendar", function(req, res){
     
       User.findOne({ googleId: currentid }, function(err, foundUser){
         foundUser.events.push(event);
-        foundUser.colors.push(`'`+date.toString()+`'`);
+        if(description==='none')
+            foundUser.nones.push(`'`+date.toString()+`'`);
+        else if(description==='official')
+            foundUser.officials.push(`'`+date.toString()+`'`);
+        else if(description==='unofficial')
+            foundUser.unofficials.push(`'`+date.toString()+`'`);
+        else if(description==='bday')
+            foundUser.bdays.push(`'`+date.toString()+`'`);
+        else
+            foundUser.miscs.push(`'`+date.toString()+`'`);
         foundUser.save();
         res.redirect("/calendar");
       });
