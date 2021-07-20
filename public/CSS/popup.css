@@ -11,6 +11,8 @@ label{
     margin-left: 7rem;
     margin-top: .5rem;
 }
-
+* {
+    transition: background-color 0.5s ease, color 1s ease;
+  }
 
 

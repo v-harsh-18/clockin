@@ -184,6 +184,42 @@ nav{
     .form-label , .modal-title{
         color: var(--formtext);
     }
+    footer{
+        height:4.5rem;
+        width:100%;
+        margin:0px;
+    
+    }
+    
+    .foot{
+        margin-top:0.3rem;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .logo-foot{
+     
+            height: 60px;
+            padding-left: 15px;
+            padding-right:2rem;
+    }
+    
+    .text-foot{
+        padding:.1rem;
+        color: var(--copyright);
+        font-size: 1.5rem;
+        font-family: 'Ubuntu';
+        padding-left:1rem;
+        font-weight: bold;
+     
+    }
+    .copyright{
+        padding: 1rem;
+        margin-top: 1rem;
+        margin-left: 1.5rem;
+        color: var(--copyright);
+    }
 
     :root{
         --black: #000000;
@@ -197,6 +233,7 @@ nav{
         --eblue: #9099aa;
         --leblue: #2477f2;
         --formgrey: #36404d;
+        --grey: grey;
     } 
 
      .light-theme{
@@ -211,7 +248,9 @@ nav{
         --eventt: var(--white);
         --formbg: var(--white);
         --formtext: var(--black);
+        --copyright: var(--black);
     }
+    
     
     .dark-theme{
         --navigationbg: var(--black);
@@ -225,5 +264,10 @@ nav{
         --eventt: var(--black);
         --formbg: var(--formgrey);
         --formtext: var(--lightgrey);
+        --copyright: var(--grey);
+
     }
     
+    * {
+        transition: background-color 0.5s ease, color 1s ease;
+      }

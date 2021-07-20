@@ -87,6 +87,7 @@
                             <div id="mdate"></div>
         
                             <div id="mtime"></div>
+                            <div id="mlink"></div>
         
                             <div id="freq"></div>
                             <button class="btn btn-primary submit" type="submit" id="idi" name="idi">Delete</button>
@@ -106,6 +107,15 @@
                 <div class="ball"></div>
             </label>
         </div>
+        <footer class="shadow foot">
+            <div class="logo">
+                <img class="logo-foot" id="logo-foot" src="img/logo2.png">
+            </div>
+            <div class="text-foot">Try ClockIn now</div>
+            <p class="copyright">&copy; copyright 2021 ClockIn</p>
+        
+    
+        </footer>
 
         <script>
 
@@ -125,12 +135,16 @@
                     },
                     dayMaxEvents: true,
                     eventClick: function (info) {
+                        info.jsEvent.preventDefault();
                         var eventObj = info.event;
                         console.log(eventObj.id);
                         document.getElementById('new').click();
                         document.getElementById('mtitle').innerHTML = "Event Title: " + eventObj.title;
-                        document.getElementById('mdate').innerHTML = "Event Date: " + eventObj.id;
+                        document.getElementById('mdate').innerHTML = "Event Date: " + eventObj.start;
+                        // document.getElementById('mtime').innerHTML = "Event Time " + eventObj.time;
+                        document.getElementById('mlink').innerHTML = "Event Link: " + `<a href="` +eventObj.url + `" target='_blank'>` + eventObj.url + `</a>`;
                         document.getElementById('idi').setAttribute('value',eventObj.id);
+                        
                     },
             
                     events: reminder,
@@ -157,6 +171,26 @@
             });
 
         </script>
+
+        <script>
+            function changeImage() {
+                var image = document.getElementById('logo2');
+                if (image.src.match("img/logo2.png")) {
+                    image.src = "img/one.jpg";
+                }
+                else {
+                    image.src = "img/logo2.png";
+                }
+                var image = document.getElementById('logo-foot');
+        if (image.src.match("img/logo2.png")) {
+            image.src = "img/one.jpg";
+        }
+        else {
+            image.src = "img/logo2.png";
+        }
+            }
+        </script>
+
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 let None = [<%-nones%>]

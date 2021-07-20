@@ -45,9 +45,9 @@ const eventsSchema = new mongoose.Schema({
         freq : String,
         until: String 
     },
-    date: String,
+    start: String,
     time: String,
-    link:String,
+    url:String,
     allDay: Boolean,
     startRecur: String,
     endRecur: String,
@@ -248,9 +248,9 @@ app.post("/calendar", function(req, res){
 
     const event = new Event({
         title: title,
-        date: date,
+        start: date,
         time: time,
-        link: link,
+        url: link,
         _id:id,
         id:id,
         allDay:false,

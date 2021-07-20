@@ -247,5 +247,8 @@ footer{
     --copyright: var(--lightgrey);
 }
 
+* {
+    transition: background-color 0.5s ease, color 1s ease;
+  }
 
   
