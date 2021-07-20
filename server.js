@@ -157,7 +157,8 @@ app.get("/calendar", function (req, res) {
     res.redirect('/');
     }
 });
-
+let descp="";
+let dte="";
 let tm="";
 
 app.post("/calendar", function(req, res){
@@ -314,9 +315,37 @@ app.post("/calendar", function(req, res){
         }
         else
         {
+            let vuser=foundUser.events.id(idi);
             foundUser.events.pull({id:idi});
             foundUser.save();
             res.redirect('/calendar');
+
+            dte=vuser.start;
+            dte=`'`+dte+`'`
+            descp=vuser.description;
+            console.log(descp);
+
+            if(descp==="none")
+            {
+                foundUser.nones.remove(dte);
+            }
+            else if(descp==="official")
+            {
+                foundUser.officials.remove(dte);
+            }
+            else if(descp==="unofficial")
+            {
+                foundUser.unofficials.remove(dte);
+            }
+            else if(descp==="bday")
+            {
+                foundUser.bdays.remove(dte);
+            }
+            else if(descp==="misc")
+            {
+                foundUser.miscs.remove(dte);
+            }
+
         }
     })
 
