@@ -3,14 +3,20 @@
     background-color: var(--navigationbg)!important;
 }
 
+.container{
+    width:fit-content;
+    padding-top:23vw;
+}
+
 body{
     background-color: var(--navigationbg)!important;
+    width: fit-content;
 }
 nav{
     height: auto;
-    position: fixed;
     width: 100%;
     margin-top: 0px;
+    position: fixed;
 }
 .shadow {
     box-shadow: 0 .5rem 1rem var(--ldshadow)!important;
@@ -39,28 +45,37 @@ nav{
     margin-top: 1.5rem;
 }
 
-.video{
-    height: 20rem;
+.video {
+    height: 15rem;
     width: 23rem;
-    margin-top: 3rem;
-    margin-left: auto;
+    margin-top: 0rem;
+    margin-left: 0rem;
 }
 
-.vidpanel{
+.vidpanel {
     align-items: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .name{
     margin: auto;
     padding-left: 0rem;
-    padding-top: 4rem;
+    padding-top: 1rem;
+    margin-left: 1vw;
+    margin-right: 1vw;
+
 }
 
 .heading{
-    font-size: 13rem;
-    margin-left: -2rem;
+    font-size: 7rem;
+    margin-left: 0rem;
+    margin:auto;
     display: inline-block;
     color:var(--clocktext)!important;
+    display: block;
 }
 
 .In{
@@ -69,22 +84,25 @@ nav{
 
 .row{
     margin-top: 0px;
-    padding-top: 130px;
+    padding-top: 10vw;
+    justify-content: center;
 }
 
-.panel1{
 
-    height: 500px;
-    background-image: url('../img/two.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-items: center;
-    padding-left: 20px;
-    margin-top: 55px;
-    
-}
+    .panel1 {
+        height: 235px;
+        background-image: url(../img/two.jpg);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        padding-left: 20px;
+        margin-top: 55px;
+        width: 100%;
+    }
+
 .panel1text{
     display: flex;
     flex-direction: row;
@@ -94,21 +112,21 @@ nav{
     display: inline-block;
     font-family: 'Ubuntu', sans-serif;
     color: white;
-    margin-left: 4rem;
-    margin-top: 120px;
+    margin-left: 1rem;
+    margin-top: 15vw;
 }
 .p1{
     
-    font-size: 70px;
+    font-size: 7vw;
     line-height:0px;
 }
 .p2{
-    font-size: 100px;
-    line-height:65px;
+    font-size: 10vw;
+    line-height:7vw;
 }
 .p3{
-    font-size: 80px;
-    line-height:65px;
+    font-size: 8vw;
+    line-height:7vw;
 }
 
 .features {
@@ -127,11 +145,13 @@ nav{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding:1rem;
 
 }
 
 .panellogos{
     fill: var(--panellogos);
+    height:4rem;
 }
 
 .ftext{
@@ -140,6 +160,7 @@ nav{
     margin-top: 5%;
     font-weight: bold;
     color: var(--ftext);
+    font-size: 1.2rem;
 }
 
 .icon2{
@@ -150,13 +171,14 @@ nav{
     text-align: center;
     font-family: 'Ubuntu', sans-serif;
     color: grey;
+    font-size: .8rem;
 }
 
 .panel3{
     background-image: url('../img/one.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    height: 30rem;
+    height: 15rem;
     display:flex;
     align-items:flex-end;
     flex-direction:row-reverse;
@@ -172,14 +194,14 @@ nav{
 .p3text1{
     padding:1rem;
      color: white;
-     font-size: 3.5rem;
+     font-size: 1.7rem;
      font-family: 'Ubuntu';
 
 }
 .p3text2{
     padding:1rem;
      color: white;
-     font-size: 1.5rem;
+     font-size: .8rem;
      font-family: 'Ubuntu';
      padding-top: 0;
 
@@ -190,6 +212,11 @@ footer{
     width:100%;
     margin:0px;
 
+}
+
+.col-sm-9 {
+    flex: 0 0 auto;
+    width: auto;
 }
 
 .foot{
@@ -254,11 +281,18 @@ footer{
     --ldshadow: var(--dswhite);
 }
 
+.rcontainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+}
+
 * {
     transition: background-color 0.3s ease, color 1s ease;
-  }
+  };
 
-  .container{
-      padding-top: 0;
+  .heading{
+      margin-left:0;
+      font-size:8rem;
   }
-  
