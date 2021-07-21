@@ -295,3 +295,12 @@ nav{
     * {
         transition: background-color 0.5s ease, color 1s ease;
       }
+
+      .input-group>.form-control, .input-group>.form-select {
+        position: relative;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        width: 100%;
+        min-width: 0;
+        margin: 0;
+    }
