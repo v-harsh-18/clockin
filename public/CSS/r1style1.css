@@ -5,6 +5,7 @@
 
 .container{
     width:fit-content;
+    padding-top:23vw;
 }
 
 body{
@@ -15,6 +16,7 @@ nav{
     height: auto;
     width: 100%;
     margin-top: 0px;
+    position: fixed;
 }
 .shadow {
     box-shadow: 0 .5rem 1rem var(--ldshadow)!important;
@@ -44,7 +46,7 @@ nav{
 }
 
 .video {
-    height: 20rem;
+    height: 15rem;
     width: 23rem;
     margin-top: 0rem;
     margin-left: 0rem;
@@ -68,7 +70,7 @@ nav{
 }
 
 .heading{
-    font-size: 8rem;
+    font-size: 7rem;
     margin-left: 0rem;
     margin:auto;
     display: inline-block;
@@ -86,23 +88,21 @@ nav{
     justify-content: center;
 }
 
-.panel1{
 
-    height: 500px;
-    background-image: url('../img/two.jpg');
-    background-position: center center;
- 
-    background-repeat: no-repeat;
-    background-size: contain;
-    display: flex;
-    align-items: center;
-    justify-items: center;
-    padding-left: 20px;
-    margin-top: 55px;
-    width: 100%;
-    
-    
-}
+    .panel1 {
+        height: 235px;
+        background-image: url(../img/two.jpg);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        padding-left: 20px;
+        margin-top: 55px;
+        width: 100%;
+    }
+
 .panel1text{
     display: flex;
     flex-direction: row;
@@ -145,11 +145,13 @@ nav{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding:1rem;
 
 }
 
 .panellogos{
     fill: var(--panellogos);
+    height:4rem;
 }
 
 .ftext{
@@ -158,6 +160,7 @@ nav{
     margin-top: 5%;
     font-weight: bold;
     color: var(--ftext);
+    font-size: 1.2rem;
 }
 
 .icon2{
@@ -168,13 +171,14 @@ nav{
     text-align: center;
     font-family: 'Ubuntu', sans-serif;
     color: grey;
+    font-size: .8rem;
 }
 
 .panel3{
     background-image: url('../img/one.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    height: 30rem;
+    height: 15rem;
     display:flex;
     align-items:flex-end;
     flex-direction:row-reverse;
@@ -190,14 +194,14 @@ nav{
 .p3text1{
     padding:1rem;
      color: white;
-     font-size: 3.5rem;
+     font-size: 1.7rem;
      font-family: 'Ubuntu';
 
 }
 .p3text2{
     padding:1rem;
      color: white;
-     font-size: 1.5rem;
+     font-size: .8rem;
      font-family: 'Ubuntu';
      padding-top: 0;
 

@@ -58,7 +58,7 @@ nav{
 
 .heading{
     font-size: 13rem;
-    margin-left: 4rem;
+    margin-left: -2rem;
     display: inline-block;
     color:var(--clocktext)!important;
 }
@@ -258,4 +258,7 @@ footer{
     transition: background-color 0.3s ease, color 1s ease;
   }
 
+  .container{
+      padding-top: 0;
+  }
   
