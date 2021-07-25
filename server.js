@@ -14,6 +14,7 @@ const MongoClient = require("mongodb").MongoClient;
 const nodemailer = require('nodemailer');
 const axios = require('axios');
 const { response } = require('express');
+const { MongoNetworkTimeoutError } = require('mongodb');
 
 const app = express();
 
@@ -48,6 +49,7 @@ const eventsSchema = new mongoose.Schema({
         until: String
     },
     start: String,
+    duration:String,
     time: String,
     url: String,
     allDay: Boolean,
@@ -268,10 +270,11 @@ app.post("/calendar", function(req, res) {
         url: link,
         _id: id,
         id: id,
+        duration:'01:00',
         allDay: false,
         description: description,
         rrule: {
-            dtstart: dtstart,
+            dtstart: dtstart+'T'+time+':00',
             freq: freq,
             until: until
         },
