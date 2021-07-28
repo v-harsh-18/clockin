@@ -279,7 +279,7 @@ nav{
         --navigationbg: var(--black);
         --buttons: var(--nminty);
         --hbuttons: var(--nminty2);
-        --grid:var(--formgrey);
+        --grid:var(--black);
         --vctext: var(--lightgrey);
         --fcdate: var(--lightgrey);
         --fcmonth: var(--lightgrey);
