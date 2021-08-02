@@ -165,9 +165,8 @@ app.get("/calendar", function(req, res) {
                             } else if (foundUser.events[i].rrule.freq === 'weekly') {
                                 let d = new Date(`"` + foundUser.events[i].start + `"`);
                                 let n = d.getDay();
-                                let k = 0;
-                                if (n === 1) { k = 2 } else if (n === 2) { k = 3 } else if (n === 3) { k = 4 } else if (n === 4) { k = 5 } else if (n === 5) { k = 6 } else if (n === 6) { k = 7 } else if (n === 0) { k = 1 }
-                                vnone.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `weekdays :` + `[` + k + `]` + `}`);
+                                let k = n+1;
+                    vnone.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `weekdays :` + `[` + k + `]` + `}`);
 
                             } else if (foundUser.events[i].rrule.freq === 'monthly') {
                                 let l = 1;
@@ -180,10 +179,9 @@ app.get("/calendar", function(req, res) {
                                 let d = new Date(`"` + foundUser.events[i].start + `"`);
                                 let n = d.getDate();
                                 let m = d.getMonth();
-                                let k = 0;
+                                let k = 1;
+                                if(m!=12){k=m+1};
 
-
-                                if (m === 1) { k = 2 } else if (m === 2) { k = 3 } else if (m === 3) { k = 4 } else if (m === 4) { k = 5 } else if (m === 5) { k = 6 } else if (m === 6) { k = 7 } else if (m === 7) { k = 8 } else if (m === 8) { k = 9 } else if (m === 9) { k = 10 } else if (m === 10) { k = 11 } else if (m === 11) { k = 12 } else { k = 1 }
                                 vnone.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `yearlyInterval :` + l + `,` + `on :` + `[{` + `months : ` + k + `,` + `days : ` + n + `}` + `]` + `}`);
 
                             } else {
@@ -197,8 +195,8 @@ app.get("/calendar", function(req, res) {
                             } else if (foundUser.events[i].rrule.freq === 'weekly') {
                                 let d = new Date(`"` + foundUser.events[i].start + `"`);
                                 let n = d.getDay();
-                                let k = 0;
-                                if (n === 1) { k = 2 } else if (n === 2) { k = 3 } else if (n === 3) { k = 4 } else if (n === 4) { k = 5 } else if (n === 5) { k = 6 } else if (n === 6) { k = 7 } else if (n === 0) { k = 1 }
+                                let k = n+1;
+
                                 vofficial.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `weekdays :` + `[` + k + `]` + `}`);
 
                             } else if (foundUser.events[i].rrule.freq === 'monthly') {
@@ -212,8 +210,9 @@ app.get("/calendar", function(req, res) {
                                 let d = new Date(`"` + foundUser.events[i].start + `"`);
                                 let n = d.getDate();
                                 let m = d.getMonth();
-                                let k = 0;
-                                if (m === 1) { k = 2 } else if (m === 2) { k = 3 } else if (m === 3) { k = 4 } else if (m === 4) { k = 5 } else if (m === 5) { k = 6 } else if (m === 6) { k = 7 } else if (m === 7) { k = 8 } else if (m === 8) { k = 9 } else if (m === 9) { k = 10 } else if (m === 10) { k = 11 } else if (m === 11) { k = 12 } else { k = 1 }
+                                let k = 1;
+                                if (m != 12) { k = m+1 };
+
                                 vofficial.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `yearlyInterval :` + l + `,` + `on :` + `[{` + `months : ` + k + `,` + `days : ` + n + `}` + `]` + `}`);
 
                             } else {
@@ -227,8 +226,8 @@ app.get("/calendar", function(req, res) {
                             } else if (foundUser.events[i].rrule.freq === 'weekly') {
                                 let d = new Date(`"` + foundUser.events[i].start + `"`);
                                 let n = d.getDay();
-                                let k = 0;
-                                if (n === 1) { k = 2 } else if (n === 2) { k = 3 } else if (n === 3) { k = 4 } else if (n === 4) { k = 5 } else if (n === 5) { k = 6 } else if (n === 6) { k = 7 } else if (n === 0) { k = 1 }
+                                let k = n+1;
+
                                 vunofficial.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `weekdays :` + `[` + k + `]` + `}`);
 
                             } else if (foundUser.events[i].rrule.freq === 'monthly') {
@@ -242,8 +241,9 @@ app.get("/calendar", function(req, res) {
                                 let d = new Date(`"` + foundUser.events[i].start + `"`);
                                 let n = d.getDate();
                                 let m = d.getMonth();
-                                let k = 0;
-                                if (m === 1) { k = 2 } else if (m === 2) { k = 3 } else if (m === 3) { k = 4 } else if (m === 4) { k = 5 } else if (m === 5) { k = 6 } else if (m === 6) { k = 7 } else if (m === 7) { k = 8 } else if (m === 8) { k = 9 } else if (m === 9) { k = 10 } else if (m === 10) { k = 11 } else if (m === 11) { k = 12 } else { k = 1 }
+                                let k = 1;
+                                if(m!=12){k=m+1};
+
                                 vunofficial.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `yearlyInterval :` + l + `,` + `on :` + `[{` + `months : ` + k + `,` + `days : ` + n + `}` + `]` + `}`);
 
                             } else {
@@ -257,8 +257,8 @@ app.get("/calendar", function(req, res) {
                             } else if (foundUser.events[i].rrule.freq === 'weekly') {
                                 let d = new Date(`"` + foundUser.events[i].start + `"`);
                                 let n = d.getDay();
-                                let k = 0;
-                                if (n === 1) { k = 2 } else if (n === 2) { k = 3 } else if (n === 3) { k = 4 } else if (n === 4) { k = 5 } else if (n === 5) { k = 6 } else if (n === 6) { k = 7 } else if (n === 0) { k = 1 }
+                                let k = n+1;
+
                                 vbday.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `weekdays :` + `[` + k + `]` + `}`);
 
                             } else if (foundUser.events[i].rrule.freq === 'monthly') {
@@ -272,9 +272,9 @@ app.get("/calendar", function(req, res) {
                                 let d = new Date(`"` + foundUser.events[i].start + `"`);
                                 let n = d.getDate();
                                 let m = d.getMonth();
-                                let k = 0;
-                                if (m === 1) { k = 2 } else if (m === 2) { k = 3 } else if (m === 3) { k = 4 } else if (m === 4) { k = 5 } else if (m === 5) { k = 6 } else if (m === 6) { k = 7 } else if (m === 7) { k = 8 } else if (m === 8) { k = 9 } else if (m === 9) { k = 10 } else if (m === 10) { k = 11 } else if (m === 11) { k = 12 } else { k = 1 }
-                                vbday.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `yearlyInterval :` + l + `,` + `on :` + `[{` + `months : ` + k + `,` + `days : ` + n + `}` + `]` + `}`);
+                                let k = 1;
+                                if(m!=12){k=m+1};
+                  vbday.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `yearlyInterval :` + l + `,` + `on :` + `[{` + `months : ` + k + `,` + `days : ` + n + `}` + `]` + `}`);
 
                             } else {
                                 vbday.push(`{` + `"` + foundUser.events[i].start + `"` + `}`);
@@ -287,8 +287,8 @@ app.get("/calendar", function(req, res) {
                             } else if (foundUser.events[i].rrule.freq === 'weekly') {
                                 let d = new Date(`"` + foundUser.events[i].start + `"`);
                                 let n = d.getDay();
-                                let k = 0;
-                                if (n === 1) { k = 2 } else if (n === 2) { k = 3 } else if (n === 3) { k = 4 } else if (n === 4) { k = 5 } else if (n === 5) { k = 6 } else if (n === 6) { k = 7 } else if (n === 0) { k = 1 }
+                                let k = n+1;
+
                                 vmisc.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `weekdays :` + `[` + k + `]` + `}`);
 
                             } else if (foundUser.events[i].rrule.freq === 'monthly') {
@@ -302,8 +302,9 @@ app.get("/calendar", function(req, res) {
                                 let d = new Date(`"` + foundUser.events[i].start + `"`);
                                 let n = d.getDate();
                                 let m = d.getMonth();
-                                let k = 0;
-                                if (m === 1) { k = 2 } else if (m === 2) { k = 3 } else if (m === 3) { k = 4 } else if (m === 4) { k = 5 } else if (m === 5) { k = 6 } else if (m === 6) { k = 7 } else if (m === 7) { k = 8 } else if (m === 8) { k = 9 } else if (m === 9) { k = 10 } else if (m === 10) { k = 11 } else if (m === 11) { k = 12 } else { k = 1 }
+                                let k = 1;
+                                if(m!=12){k=m+1}
+
                                 vmisc.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `yearlyInterval :` + l + `,` + `on :` + `[{` + `months : ` + k + `,` + `days : ` + n + `}` + `]` + `}`);
 
                             } else {
