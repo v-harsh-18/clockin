@@ -297,6 +297,7 @@ app.get("/calendar", function(req, res) {
                                 let n = d.getDate();
                                 vmisc.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `monthlyInterval :` + l + `,` + `on :` + `[{` + `days : ` + n + `}]` + `}`);
 
+                                
                             } else if (foundUser.events[i].rrule.freq === 'yearly') {
                                 let l = 1;
                                 let d = new Date(`"` + foundUser.events[i].start + `"`);
