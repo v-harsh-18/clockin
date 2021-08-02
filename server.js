@@ -330,7 +330,7 @@ app.get("/calendar", function(req, res) {
                     if (!calendarList.data) return res.render("calendar", { idpic: foundUser.picture, idname: foundUser.fname, events: foundUser.events, vnone: vnone, vofficial: vofficial, vunofficial: vunofficial, vbday: vbday, vmisc: vmisc });
                     let l = calendarList.data.items.length;
                     // console.log(l)
-                    for (let i = 0; i < l; i++) {
+                    for (let i = 0; i < 1; i++) {
                         let Cid = calendarList.data.items[i].id;
                         try {
                             event = await axios.get('https://www.googleapis.com/calendar/v3/calendars/' + Cid + '/events', {
@@ -346,7 +346,7 @@ app.get("/calendar", function(req, res) {
 
                         // console.log(response.data.items.length);
 
-                        for (let j = 0; j < event.data.items.length; j++) {
+                        for (let j = 0; j < 2; j++) {
                             let id = '';
                             id = event.data.items[j].id;
 
@@ -392,22 +392,14 @@ app.get("/calendar", function(req, res) {
                                 // endRecur: String,
                                 // description: String  
                                 //CANNOT CONSOLE LOG NEWEVENTS OUTSIDE AXIOS.GET
-
-
-
                         }
                         // console.log(newEvents);
                         //newEvents.concat(actualEvent.data.items[i]);
-
-
                     }
 
 
-
-
-
                     console.log("New Events before rendering\n", newEvents);
-                    res.render("calendar", { idpic: foundUser.picture, idname: foundUser.fname, events: foundUser.events, vnone: vnone, vofficial: vofficial, vunofficial: vunofficial, vbday: vbday, vmisc: vmisc });
+                    res.render("calendar", { idpic: foundUser.picture, idname: foundUser.fname, gevents: newEvents, events: foundUser.events, vnone: vnone, vofficial: vofficial, vunofficial: vunofficial, vbday: vbday, vmisc: vmisc });
                 }
             }
         });

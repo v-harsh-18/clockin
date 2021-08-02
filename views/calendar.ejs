@@ -124,13 +124,36 @@
     
         </footer>
 
+        <div id="new1" arr="<%=JSON.stringify(gevents)%>">
+        </div>
+       
+
         <script>
 
             document.addEventListener('DOMContentLoaded', function () {
                 var calendarEl = document.getElementById('calendar');
-                // var x = document.getElementById("yy").innerHTML;
-                let reminder = [<%-events%>];
+                let devents=[<%-events%>];
+                console.log(devents);
 
+                let reminder=JSON.parse(document.getElementById("new1").getAttribute('arr'));
+
+                let greminder=[];
+
+                for(let i=0;i<2;i++)
+                {
+                    let obj={
+                        title:reminder[i].title,
+                        start:reminder[i].start.dateTime,
+                        id:reminder[i].id,
+                        time:"08:00",
+                        allDay:false
+                    }
+
+                    greminder.push(obj);
+                }
+
+                var newarray = devents.concat(greminder);
+                console.log(newarray);
 
                 var calendar = new FullCalendar.Calendar(calendarEl, {
                     selectable: true,
@@ -156,7 +179,7 @@
                         
                     },
             
-                    events: reminder,
+                    events: newarray,
 
 
                     // dateClick: function (info) {
