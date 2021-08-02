@@ -197,6 +197,7 @@ app.get("/calendar", function(req, res) {
                                 let k = n+1;
                                 vofficial.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `weekdays :` + `[` + k + `]` + `}`);
 
+                                
                             } else if (foundUser.events[i].rrule.freq === 'monthly') {
                                 let l = 1;
                                 let d = new Date(`"` + foundUser.events[i].start + `"`);
