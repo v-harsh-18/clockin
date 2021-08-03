@@ -165,7 +165,8 @@ app.get("/calendar", function(req, res) {
                             } else if (foundUser.events[i].rrule.freq === 'weekly') {
                                 let d = new Date(`"` + foundUser.events[i].start + `"`);
                                 let n = d.getDay();
-                                let k = n+1;
+                                let k = 0;
+                                if (n === 1) { k = 2 } else if (n === 2) { k = 3 } else if (n === 3) { k = 4 } else if (n === 4) { k = 5 } else if (n === 5) { k = 6 } else if (n === 6) { k = 7 } else if (n === 0) { k = 1 }
                                 vnone.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `weekdays :` + `[` + k + `]` + `}`);
 
                             } else if (foundUser.events[i].rrule.freq === 'monthly') {
@@ -179,8 +180,10 @@ app.get("/calendar", function(req, res) {
                                 let d = new Date(`"` + foundUser.events[i].start + `"`);
                                 let n = d.getDate();
                                 let m = d.getMonth();
-                                let k = 1;
-                                if(m!=12){k=m+1};
+                                let k = 0;
+
+
+                                if (m === 1) { k = 2 } else if (m === 2) { k = 3 } else if (m === 3) { k = 4 } else if (m === 4) { k = 5 } else if (m === 5) { k = 6 } else if (m === 6) { k = 7 } else if (m === 7) { k = 8 } else if (m === 8) { k = 9 } else if (m === 9) { k = 10 } else if (m === 10) { k = 11 } else if (m === 11) { k = 12 } else { k = 1 }
                                 vnone.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `yearlyInterval :` + l + `,` + `on :` + `[{` + `months : ` + k + `,` + `days : ` + n + `}` + `]` + `}`);
 
                             } else {
@@ -194,10 +197,10 @@ app.get("/calendar", function(req, res) {
                             } else if (foundUser.events[i].rrule.freq === 'weekly') {
                                 let d = new Date(`"` + foundUser.events[i].start + `"`);
                                 let n = d.getDay();
-                                let k = n+1;
+                                let k = 0;
+                                if (n === 1) { k = 2 } else if (n === 2) { k = 3 } else if (n === 3) { k = 4 } else if (n === 4) { k = 5 } else if (n === 5) { k = 6 } else if (n === 6) { k = 7 } else if (n === 0) { k = 1 }
                                 vofficial.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `weekdays :` + `[` + k + `]` + `}`);
 
-                                
                             } else if (foundUser.events[i].rrule.freq === 'monthly') {
                                 let l = 1;
                                 let d = new Date(`"` + foundUser.events[i].start + `"`);
@@ -209,8 +212,8 @@ app.get("/calendar", function(req, res) {
                                 let d = new Date(`"` + foundUser.events[i].start + `"`);
                                 let n = d.getDate();
                                 let m = d.getMonth();
-                                let k = 1;
-                                if(m!=12){k=m+1};
+                                let k = 0;
+                                if (m === 1) { k = 2 } else if (m === 2) { k = 3 } else if (m === 3) { k = 4 } else if (m === 4) { k = 5 } else if (m === 5) { k = 6 } else if (m === 6) { k = 7 } else if (m === 7) { k = 8 } else if (m === 8) { k = 9 } else if (m === 9) { k = 10 } else if (m === 10) { k = 11 } else if (m === 11) { k = 12 } else { k = 1 }
                                 vofficial.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `yearlyInterval :` + l + `,` + `on :` + `[{` + `months : ` + k + `,` + `days : ` + n + `}` + `]` + `}`);
 
                             } else {
@@ -225,7 +228,7 @@ app.get("/calendar", function(req, res) {
                                 let d = new Date(`"` + foundUser.events[i].start + `"`);
                                 let n = d.getDay();
                                 let k = 0;
-                                k=n+1;
+                                if (n === 1) { k = 2 } else if (n === 2) { k = 3 } else if (n === 3) { k = 4 } else if (n === 4) { k = 5 } else if (n === 5) { k = 6 } else if (n === 6) { k = 7 } else if (n === 0) { k = 1 }
                                 vunofficial.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `weekdays :` + `[` + k + `]` + `}`);
 
                             } else if (foundUser.events[i].rrule.freq === 'monthly') {
@@ -239,8 +242,8 @@ app.get("/calendar", function(req, res) {
                                 let d = new Date(`"` + foundUser.events[i].start + `"`);
                                 let n = d.getDate();
                                 let m = d.getMonth();
-                                let k = 1;
-                                if(m!=12){k=m+1};
+                                let k = 0;
+                                if (m === 1) { k = 2 } else if (m === 2) { k = 3 } else if (m === 3) { k = 4 } else if (m === 4) { k = 5 } else if (m === 5) { k = 6 } else if (m === 6) { k = 7 } else if (m === 7) { k = 8 } else if (m === 8) { k = 9 } else if (m === 9) { k = 10 } else if (m === 10) { k = 11 } else if (m === 11) { k = 12 } else { k = 1 }
                                 vunofficial.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `yearlyInterval :` + l + `,` + `on :` + `[{` + `months : ` + k + `,` + `days : ` + n + `}` + `]` + `}`);
 
                             } else {
@@ -254,7 +257,8 @@ app.get("/calendar", function(req, res) {
                             } else if (foundUser.events[i].rrule.freq === 'weekly') {
                                 let d = new Date(`"` + foundUser.events[i].start + `"`);
                                 let n = d.getDay();
-                                let k = n+1;
+                                let k = 0;
+                                if (n === 1) { k = 2 } else if (n === 2) { k = 3 } else if (n === 3) { k = 4 } else if (n === 4) { k = 5 } else if (n === 5) { k = 6 } else if (n === 6) { k = 7 } else if (n === 0) { k = 1 }
                                 vbday.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `weekdays :` + `[` + k + `]` + `}`);
 
                             } else if (foundUser.events[i].rrule.freq === 'monthly') {
@@ -268,8 +272,8 @@ app.get("/calendar", function(req, res) {
                                 let d = new Date(`"` + foundUser.events[i].start + `"`);
                                 let n = d.getDate();
                                 let m = d.getMonth();
-                                let k = 1;
-                                if(m!=12){k=m+1};
+                                let k = 0;
+                                if (m === 1) { k = 2 } else if (m === 2) { k = 3 } else if (m === 3) { k = 4 } else if (m === 4) { k = 5 } else if (m === 5) { k = 6 } else if (m === 6) { k = 7 } else if (m === 7) { k = 8 } else if (m === 8) { k = 9 } else if (m === 9) { k = 10 } else if (m === 10) { k = 11 } else if (m === 11) { k = 12 } else { k = 1 }
                                 vbday.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `yearlyInterval :` + l + `,` + `on :` + `[{` + `months : ` + k + `,` + `days : ` + n + `}` + `]` + `}`);
 
                             } else {
@@ -283,7 +287,8 @@ app.get("/calendar", function(req, res) {
                             } else if (foundUser.events[i].rrule.freq === 'weekly') {
                                 let d = new Date(`"` + foundUser.events[i].start + `"`);
                                 let n = d.getDay();
-                                let k = n+1;
+                                let k = 0;
+                                if (n === 1) { k = 2 } else if (n === 2) { k = 3 } else if (n === 3) { k = 4 } else if (n === 4) { k = 5 } else if (n === 5) { k = 6 } else if (n === 6) { k = 7 } else if (n === 0) { k = 1 }
                                 vmisc.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `weekdays :` + `[` + k + `]` + `}`);
 
                             } else if (foundUser.events[i].rrule.freq === 'monthly') {
@@ -298,8 +303,8 @@ app.get("/calendar", function(req, res) {
                                 let d = new Date(`"` + foundUser.events[i].start + `"`);
                                 let n = d.getDate();
                                 let m = d.getMonth();
-                                let k = 1;
-                                if(m!=12){k=m+1};
+                                let k = 0;
+                                if (m === 1) { k = 2 } else if (m === 2) { k = 3 } else if (m === 3) { k = 4 } else if (m === 4) { k = 5 } else if (m === 5) { k = 6 } else if (m === 6) { k = 7 } else if (m === 7) { k = 8 } else if (m === 8) { k = 9 } else if (m === 9) { k = 10 } else if (m === 10) { k = 11 } else if (m === 11) { k = 12 } else { k = 1 }
                                 vmisc.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `yearlyInterval :` + l + `,` + `on :` + `[{` + `months : ` + k + `,` + `days : ` + n + `}` + `]` + `}`);
 
                             } else {
@@ -325,7 +330,7 @@ app.get("/calendar", function(req, res) {
                     if (!calendarList.data) return res.render("calendar", { idpic: foundUser.picture, idname: foundUser.fname, events: foundUser.events, vnone: vnone, vofficial: vofficial, vunofficial: vunofficial, vbday: vbday, vmisc: vmisc });
                     let l = calendarList.data.items.length;
                     // console.log(l)
-                    for (let i = 0; i < 1; i++) {
+                    for (let i = 0; i < l; i++) {
                         let Cid = calendarList.data.items[i].id;
                         try {
                             event = await axios.get('https://www.googleapis.com/calendar/v3/calendars/' + Cid + '/events', {
@@ -341,60 +346,91 @@ app.get("/calendar", function(req, res) {
 
                         // console.log(response.data.items.length);
 
-                        for (let j = 0; j < 2; j++) {
-                            let id = '';
-                            id = event.data.items[j].id;
+                        // for (let j = 0; j < 2; j++) {
+                        //     let id = '';
+                        //     id = event.data.items[j].id;
 
 
-                            try {
-                                actualEvent = await axios.get('https://www.googleapis.com/calendar/v3/calendars/' + Cid + '/events/' + id, {
-                                    headers: {
-                                        'Authorization': `Bearer ${req.session.accessToken}`
-                                    }
-                                })
+                        //     try {
+                        //         actualEvent = await axios.get('https://www.googleapis.com/calendar/v3/calendars/' + Cid + '/events/' + id, {
+                        //             headers: {
+                        //                 'Authorization': `Bearer ${req.session.accessToken}`
+                        //             }
+                        //         })
 
-                            } catch (err) {
-                                continue;
-                            }
-                            // console.log(response)
-                            let obj = {};
-                            obj["title"] = actualEvent.data.summary;
-                            obj["id"] = actualEvent.data.id;
-                            obj["rrule"] = {
-                                dtstart: actualEvent.data.start.date,
-                                until: actualEvent.data.end.date,
-                            }
-                            obj["start"] = actualEvent.data.start;
-                            obj["time"] = "08:00";
-                            obj["allDay"] = false;
-                            newEvents.push(obj);
-                            console.log("Object pushed into newEvents\n", newEvents.length)
-                                // console.log(obj);
-                                // _id: String,
-                                // id: String,
-                                // title: String,
-                                // rrule: {
-                                //     dtstart: String,
-                                //     freq: String,
-                                //     until: String
-                                // },
-                                // start: String,
-                                // duration: String,
-                                // time: String,
-                                // url: String,
-                                // allDay: Boolean,
-                                // startRecur: String,
-                                // endRecur: String,
-                                // description: String  
-                                //CANNOT CONSOLE LOG NEWEVENTS OUTSIDE AXIOS.GET
-                        }
+                        //     } catch (err) {
+                        //         continue;
+                        //     }
+                        //     // console.log(response)
+                        //     let obj = {};
+                        //     obj["title"] = actualEvent.data.summary;
+                        //     obj["id"] = actualEvent.data.id;
+                        //     obj["rrule"] = {
+                        //         dtstart: actualEvent.data.start.date,
+                        //         until: actualEvent.data.end.date,
+                        //     }
+                        //     obj["start"] = actualEvent.data.start;
+                        //     obj["time"] = "08:00";
+                        //     obj["allDay"] = false;
+                        //     newEvents.push(obj);
+                        //     console.log("Object pushed into newEvents\n", newEvents.length)
+                        //         // console.log(obj);
+                        //         // _id: String,
+                        //         // id: String,
+                        //         // title: String,
+                        //         // rrule: {
+                        //         //     dtstart: String,
+                        //         //     freq: String,
+                        //         //     until: String
+                        //         // },
+                        //         // start: String,
+                        //         // duration: String,
+                        //         // time: String,
+                        //         // url: String,
+                        //         // allDay: Boolean,
+                        //         // startRecur: String,
+                        //         // endRecur: String,
+                        //         // description: String  
+                        //         //CANNOT CONSOLE LOG NEWEVENTS OUTSIDE AXIOS.GET
+                        // }
                         // console.log(newEvents);
                         //newEvents.concat(actualEvent.data.items[i]);
+
+
+                        let gevents=event.data.items;
+
+                        let guser = gevents.map(props => {
+                            const container = {};
+                        
+                            container._id= props.id;
+                            container.id= props.id;
+                            container.title= props.summary;
+                            // rrule: {
+                            //     dtstart: props.start.dateTime;
+                            //     freq: 'daily';
+                            //     until: props.end.dateTime;
+                            // };
+                            container.url= props.htmlLink;
+                            container.start= props.start.dateTime;
+                            container.duration= '01:00';
+                            container.time= props.start.dateTime;
+                            container.allDay= 'false';
+                            container.startRecur= props.start.dateTime;
+                            container.endRecur= props.end.dateTime;
+                            container.description= 'Google Calendar Event';
+                        
+                            return container;
+                        });
+
+                        newEvents=newEvents.concat(guser);
                     }
 
+                    let length=newEvents.length;
+
+                    console.log(newEvents);
 
                     console.log("New Events before rendering\n", newEvents);
-                    res.render("calendar", { idpic: foundUser.picture, idname: foundUser.fname, gevents: newEvents, events: foundUser.events, vnone: vnone, vofficial: vofficial, vunofficial: vunofficial, vbday: vbday, vmisc: vmisc });
+                    res.render("calendar", { idpic: foundUser.picture, idname: foundUser.fname, gevents: newEvents, events: foundUser.events, vnone: vnone, vofficial: vofficial, vunofficial: vunofficial, vbday: vbday, vmisc: vmisc, length:length});
                 }
             }
         });
