@@ -399,11 +399,11 @@ app.get("/calendar", function(req, res) {
 
                         let gevents=event.data.items;
 
-                        let guser = gevents.map(props => {
+                        let guser = gevents.map((props,index) => {
                             const container = {};
                         
-                            container._id= props.id;
-                            container.id= props.id;
+                            container._id= index;
+                            container.id= index;
                             container.title= props.summary;
                             // rrule: {
                             //     dtstart: props.start.dateTime;
@@ -418,6 +418,8 @@ app.get("/calendar", function(req, res) {
                             container.startRecur= props.start.dateTime;
                             container.endRecur= props.end.dateTime;
                             container.description= 'Google Calendar Event';
+
+                            var index=index+1;
                         
                             return container;
                         });
@@ -576,6 +578,13 @@ app.post("/calendar", function(req, res) {
 
 app.post("/delete", function(req, res) {
     const idi = req.body.idi;
+
+    if(Number.isInteger(parseInt(idi)))
+    {
+        // alert("Google Calendar events cannot be deleted.");
+        res.redirect('/calendar');
+    }
+    else{
     User.findOne({ googleId: currentid }, function(err, foundUser) {
         if (err) {
             console.log(err);
@@ -590,7 +599,7 @@ app.post("/delete", function(req, res) {
             descp = vuser.description;
         }
     })
-
+    }
 });
 
 
