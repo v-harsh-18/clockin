@@ -46,7 +46,7 @@
                         </div>
                         <div id='app' class="sidecal">
 
-                            <!-- <v-date-picker v-model='date' :value="null" color="teal" /> -->
+                            
                             <v-calendar is-expanded :columns="$screens(1)" :from-date="new Date()"
                                 :attributes="attributes" 
                                 />
@@ -102,7 +102,7 @@
                             <div id="mlink"></div>
         
                             <div id="freq"></div>
-                            <button class="btn btn-primary submit" type="submit" id="idi" name="idi">Delete</button>
+                            <button class="btn btn-primary submit" type="submit" id="idi" name="idi" >Delete</button>
                         </form>
                     </div>
                 </div>
@@ -182,16 +182,6 @@
             
                     events: newarray,
 
-
-                    // dateClick: function (info) {
-                    //     alert('You have a meet today !!!')
-                    // },
-                    // select: function (info) {
-                    //     // alert('selected ' + info.startStr + ' to ' + info.endStr);
-
-                    // },
-
-
                 });
 
                 calendar.render();
@@ -246,14 +236,6 @@
                     data() {
                         return {
                             attributes: [
-                                // {
-                                //     key: 'today',
-                                //     highlight: {
-                                //         color: 'green',
-                                //         fillMode: 'outline',
-                                //     }, 
-                                //     dates: new Date(),
-                                // },
                                 {
                                     dot: 'blue',
                                     dates: None,

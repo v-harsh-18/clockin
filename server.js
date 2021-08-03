@@ -130,19 +130,6 @@ app.get("/auth/google/clockin",
 
 
 app.get("/calendar", function(req, res) {
-    //     User.findOne({ "secret": { $ne: null } }, function (err, foundUsers) {
-    //         if (err) {
-    //             console.log(err);
-    //         } else {
-    //             if (foundUsers) {
-    // res.render("calendar", { usersWithSecrets: foundUsers });
-    // res.render("calendar");
-    //             }
-    //         }
-    //     });
-    // }
-
-
 
     if (req.isAuthenticated()) {
         User.findOne({ googleId: currentid }, async function(err, foundUser) {
@@ -326,10 +313,10 @@ app.get("/calendar", function(req, res) {
                     } catch (err) {
                         throw new Error('No calendar list');
                     }
-                    // console.log(response.data.items)
+                    
                     if (!calendarList.data) return res.render("calendar", { idpic: foundUser.picture, idname: foundUser.fname, events: foundUser.events, vnone: vnone, vofficial: vofficial, vunofficial: vunofficial, vbday: vbday, vmisc: vmisc });
                     let l = calendarList.data.items.length;
-                    // console.log(l)
+                   
                     for (let i = 0; i < l; i++) {
                         let Cid = calendarList.data.items[i].id;
                         try {
@@ -342,59 +329,6 @@ app.get("/calendar", function(req, res) {
                         } catch (err) {
                             continue;
                         }
-                    
-
-                        // console.log(response.data.items.length);
-
-                        // for (let j = 0; j < 2; j++) {
-                        //     let id = '';
-                        //     id = event.data.items[j].id;
-
-
-                        //     try {
-                        //         actualEvent = await axios.get('https://www.googleapis.com/calendar/v3/calendars/' + Cid + '/events/' + id, {
-                        //             headers: {
-                        //                 'Authorization': `Bearer ${req.session.accessToken}`
-                        //             }
-                        //         })
-
-                        //     } catch (err) {
-                        //         continue;
-                        //     }
-                        //     // console.log(response)
-                        //     let obj = {};
-                        //     obj["title"] = actualEvent.data.summary;
-                        //     obj["id"] = actualEvent.data.id;
-                        //     obj["rrule"] = {
-                        //         dtstart: actualEvent.data.start.date,
-                        //         until: actualEvent.data.end.date,
-                        //     }
-                        //     obj["start"] = actualEvent.data.start;
-                        //     obj["time"] = "08:00";
-                        //     obj["allDay"] = false;
-                        //     newEvents.push(obj);
-                        //     console.log("Object pushed into newEvents\n", newEvents.length)
-                        //         // console.log(obj);
-                        //         // _id: String,
-                        //         // id: String,
-                        //         // title: String,
-                        //         // rrule: {
-                        //         //     dtstart: String,
-                        //         //     freq: String,
-                        //         //     until: String
-                        //         // },
-                        //         // start: String,
-                        //         // duration: String,
-                        //         // time: String,
-                        //         // url: String,
-                        //         // allDay: Boolean,
-                        //         // startRecur: String,
-                        //         // endRecur: String,
-                        //         // description: String  
-                        //         //CANNOT CONSOLE LOG NEWEVENTS OUTSIDE AXIOS.GET
-                        // }
-                        // console.log(newEvents);
-                        //newEvents.concat(actualEvent.data.items[i]);
 
 
                         let gevents=event.data.items;
@@ -509,7 +443,7 @@ app.post("/calendar", function(req, res) {
         secure: false,
         auth: {
             user: 'clockin.india@gmail.com',
-            pass: 'vahi_wahi'
+            pass: process.env.PASSWORD,
         },
         tls: {
             rejectUnauthorized: false
@@ -588,7 +522,6 @@ app.post("/delete", function(req, res) {
 
     if(Number.isInteger(parseInt(idi)))
     {
-        // alert("Google Calendar events cannot be deleted.");
         res.redirect('/calendar');
     }
     else{
