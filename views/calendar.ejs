@@ -226,6 +226,16 @@
 
         <script>
             document.addEventListener('DOMContentLoaded', function () {
+                let reminder=JSON.parse(document.getElementById("new1").getAttribute('arr'));
+
+                let greminder=[];
+                let length=<%-length%>;
+
+                for(let i=0;i<length;i++)
+                {
+                    greminder.push(reminder[i].start);
+                }
+
                 let None = [<%-vnone%>]
                 let Official = [<%-vofficial%>]
                 let Unofficial = [<%-vunofficial%>]
@@ -257,12 +267,16 @@
                                     dates: Unofficial,
                                 },
                                 {
-                                    dot: 'green',
+                                    dot: 'teal',
                                     dates: Bday,
                                 },
                                 {
                                     dot: 'red',
                                     dates: Official,
+                                },
+                                {
+                                    dot:'purple',
+                                    dates: greminder,
                                 },
 
                             ],

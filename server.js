@@ -342,7 +342,7 @@ app.get("/calendar", function(req, res) {
                         } catch (err) {
                             continue;
                         }
-
+                    
 
                         // console.log(response.data.items.length);
 
@@ -411,10 +411,17 @@ app.get("/calendar", function(req, res) {
                             //     until: props.end.dateTime;
                             // };
                             container.url= props.htmlLink;
-                            container.start= props.start.dateTime;
-                            container.duration= '01:00';
-                            container.time= props.start.dateTime;
-                            container.allDay= 'false';
+                            if(props.start.dateTime!=undefined){
+                                container.start= props.start.dateTime;
+                                container.duration= '01:00';
+                                container.time= props.start.dateTime;
+                                container.allDay= 'false';
+                            }
+                            else{
+                                container.start= props.start.date;
+                                container.time = '08:00';
+                                container.allDay= 'true';
+                            }
                             container.startRecur= props.start.dateTime;
                             container.endRecur= props.end.dateTime;
                             container.description= 'Google Calendar Event';
