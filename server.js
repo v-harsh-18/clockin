@@ -341,93 +341,60 @@ app.get("/calendar", function(req, res) {
 
                         // console.log(response.data.items.length);
 
+                        for (let j = 0; j < 2; j++) {
+                            let id = '';
+                            id = event.data.items[j].id;
 
-                        // for (let j = 0; j < 2; j++) {
-                        //     let id = '';
-                        //     id = event.data.items[j].id;
 
+                            try {
+                                actualEvent = await axios.get('https://www.googleapis.com/calendar/v3/calendars/' + Cid + '/events/' + id, {
+                                    headers: {
+                                        'Authorization': `Bearer ${req.session.accessToken}`
+                                    }
+                                })
 
-                        //     try {
-                        //         actualEvent = await axios.get('https://www.googleapis.com/calendar/v3/calendars/' + Cid + '/events/' + id, {
-                        //             headers: {
-                        //                 'Authorization': `Bearer ${req.session.accessToken}`
-                        //             }
-                        //         })
-
-                        //     } catch (err) {
-                        //         continue;
-                        //     }
-                        //     // console.log(response)
-                        //     let obj = {};
-                        //     obj["title"] = actualEvent.data.summary;
-                        //     obj["id"] = actualEvent.data.id;
-                        //     obj["rrule"] = {
-                        //         dtstart: actualEvent.data.start.date,
-                        //         until: actualEvent.data.end.date,
-                        //     }
-                        //     obj["start"] = actualEvent.data.start;
-                        //     obj["time"] = "08:00";
-                        //     obj["allDay"] = false;
-                        //     newEvents.push(obj);
-                        //     console.log("Object pushed into newEvents\n", newEvents.length)
-                        //         // console.log(obj);
-                        //         // _id: String,
-                        //         // id: String,
-                        //         // title: String,
-                        //         // rrule: {
-                        //         //     dtstart: String,
-                        //         //     freq: String,
-                        //         //     until: String
-                        //         // },
-                        //         // start: String,
-                        //         // duration: String,
-                        //         // time: String,
-                        //         // url: String,
-                        //         // allDay: Boolean,
-                        //         // startRecur: String,
-                        //         // endRecur: String,
-                        //         // description: String  
-                        //         //CANNOT CONSOLE LOG NEWEVENTS OUTSIDE AXIOS.GET
-                        // }
+                            } catch (err) {
+                                continue;
+                            }
+                            // console.log(response)
+                            let obj = {};
+                            obj["title"] = actualEvent.data.summary;
+                            obj["id"] = actualEvent.data.id;
+                            obj["rrule"] = {
+                                dtstart: actualEvent.data.start.date,
+                                until: actualEvent.data.end.date,
+                            }
+                            obj["start"] = actualEvent.data.start;
+                            obj["time"] = "08:00";
+                            obj["allDay"] = false;
+                            newEvents.push(obj);
+                            console.log("Object pushed into newEvents\n", newEvents.length)
+                                // console.log(obj);
+                                // _id: String,
+                                // id: String,
+                                // title: String,
+                                // rrule: {
+                                //     dtstart: String,
+                                //     freq: String,
+                                //     until: String
+                                // },
+                                // start: String,
+                                // duration: String,
+                                // time: String,
+                                // url: String,
+                                // allDay: Boolean,
+                                // startRecur: String,
+                                // endRecur: String,
+                                // description: String  
+                                //CANNOT CONSOLE LOG NEWEVENTS OUTSIDE AXIOS.GET
+                        }
                         // console.log(newEvents);
                         //newEvents.concat(actualEvent.data.items[i]);
-
-
-                        let gevents=event.data.items;
-
-                        let guser = gevents.map(props => {
-                            const container = {};
-                        
-                            container._id= props.id;
-                            container.id= props.id;
-                            container.title= props.summary;
-                            // rrule: {
-                            //     dtstart: props.start.dateTime;
-                            //     freq: 'daily';
-                            //     until: props.end.dateTime;
-                            // };
-                            container.url= props.htmlLink;
-                            container.start= props.start.dateTime;
-                            container.duration= '01:00';
-                            container.time= props.start.dateTime;
-                            container.allDay= 'false';
-                            container.startRecur= props.start.dateTime;
-                            container.endRecur= props.end.dateTime;
-                            container.description= 'Google Calendar Event';
-                        
-                            return container;
-                        });
-
-                        newEvents=newEvents.concat(guser);
                     }
 
-                    let length=newEvents.length;
-
-                    console.log(newEvents);
 
                     console.log("New Events before rendering\n", newEvents);
-                    res.render("calendar", { idpic: foundUser.picture, idname: foundUser.fname, gevents: newEvents, events: foundUser.events, vnone: vnone, vofficial: vofficial, vunofficial: vunofficial, vbday: vbday, vmisc: vmisc, length:length});
-
+                    res.render("calendar", { idpic: foundUser.picture, idname: foundUser.fname, gevents: newEvents, events: foundUser.events, vnone: vnone, vofficial: vofficial, vunofficial: vunofficial, vbday: vbday, vmisc: vmisc });
                 }
             }
         });
