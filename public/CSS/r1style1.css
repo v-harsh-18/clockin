@@ -261,7 +261,7 @@ footer{
      
 }
 
-.light-theme{
+body[data-theme='light']{
     --navigationbg: var(--white);
     --intext: var(--minty);
     --clocktext: var(--black);
@@ -271,7 +271,7 @@ footer{
     --ldshadow: var(--lsblack);
 }
 
-.dark-theme{
+body[data-theme='dark']{
     --navigationbg: var(--black);
     --intext: var(--nminty);
     --clocktext: var(--white);

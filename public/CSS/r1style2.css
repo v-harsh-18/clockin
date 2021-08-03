@@ -259,7 +259,7 @@ nav{
          
     } 
 
-     .light-theme{
+    body[data-theme='light']{
         --navigationbg: var(--white);
         --buttons: var(--minty);
         --hbuttons: var(--minty2);
@@ -277,7 +277,7 @@ nav{
     }
     
     
-    .dark-theme{
+    body[data-theme='dark']{
         --navigationbg: var(--black);
         --buttons: var(--nminty);
         --hbuttons: var(--nminty2);
