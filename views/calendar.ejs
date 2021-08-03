@@ -28,7 +28,7 @@
 
 </head>
 
-<body class="light-theme">
+<body data-theme = "light"   id="HTML" onload="changing()">
 
     <%-include("components/navbar")-%>
     
@@ -187,15 +187,65 @@
                 calendar.render();
             });
 
-            const darkingSwitch = document.querySelector("input.darking");
+            // const darkingSwitch = document.querySelector("input.darking");
 
-            darkingSwitch.addEventListener('change', () => {
-                document.body.classList.toggle('dark-theme');
-            });
+            // darkingSwitch.addEventListener('change', () => {
+            //     document.body.classList.toggle('dark-theme');
+            // });
 
         </script>
-
         <script>
+            let theme = localStorage.getItem('data-theme');
+    const changeThemeToDark = () => {
+        document.getElementById("HTML").setAttribute("data-theme", "dark") // set theme to dark
+        localStorage.setItem("data-theme", "dark") // save theme to local storage
+        var image = document.getElementById('logo2');
+        image.src = "img/dark-logo.png";
+        var image = document.getElementById('logo-foot');
+        image.src = "img/dark-logo.png";
+        // var video = document.getElementById('video-dark');
+        // video.src = "video/logo-dark-vid.mp4";
+    }
+    
+    const changeThemeToLight = () => {
+        document.getElementById("HTML").setAttribute("data-theme", "light") // set theme light
+        localStorage.setItem("data-theme", 'light') // save theme to local storage
+        var image = document.getElementById('logo2');
+        image.src = "img/logo2.png";
+        var image = document.getElementById('logo-foot');
+        image.src = "img/logo2.png";
+        // var video = document.getElementById('video-dark');
+        // video.src = "video/logoFinal.mp4";
+    }
+    
+    
+    const checkbox = document.getElementById("checkbox");
+    let bleh;
+    checkbox.addEventListener('change', () => {
+        let theme = localStorage.getItem('data-theme'); // Retrieve saved them from local storage
+        if (theme ==='dark'){
+            changeThemeToLight()
+        }else{
+            changeThemeToDark()
+        }   
+        bleh = localStorage.getItem('data-theme');
+    });
+    
+    function changing(){
+        document.getElementById("HTML").setAttribute("data-theme", localStorage.getItem('data-theme')) ;
+        if(localStorage.getItem('data-theme')==="dark")
+        {
+            var image = document.getElementById('logo2');
+        image.src = "img/dark-logo.png";
+        var image = document.getElementById('logo-foot');
+        image.src = "img/dark-logo.png";
+        // var video = document.getElementById('video-dark');
+        // video.src = "video/logo-dark-vid.mp4";
+        }
+    }
+        </script>
+
+        <!-- <script>
             function changeImage() {
                 var image = document.getElementById('logo2');
                 if (image.src.match("img/logo2.png")) {
@@ -212,7 +262,7 @@
             image.src = "img/logo2.png";
         }
             }
-        </script>
+        </script> -->
 
         <script>
             document.addEventListener('DOMContentLoaded', function () {
