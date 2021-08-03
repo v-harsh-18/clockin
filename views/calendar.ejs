@@ -138,6 +138,7 @@
                 let reminder=JSON.parse(document.getElementById("new1").getAttribute('arr'));
 
                 let greminder=[];
+                
                 let length=<%-length%>;
 
                 for(let i=0;i<length;i++)
@@ -145,6 +146,7 @@
                     let obj={
                         title:reminder[i].title,
                         start:reminder[i].start,
+
                         id:reminder[i].id,
                         time:"08:00",
                         allDay:false
