@@ -342,19 +342,47 @@ app.get("/calendar", function(req, res) {
                             //     until: props.end.dateTime;
                             // };
                             container.url= props.htmlLink;
-                            if(props.start.dateTime!=undefined){
-                                container.start= props.start.dateTime;
-                                container.duration= '01:00';
-                                container.time= props.start.dateTime;
-                                container.allDay= 'false';
+                            if(props.start !== undefined){
+                                if(props.start.dateTime === undefined)
+                                {
+                                    container.start= props.start.date;
+                                    container.time = '08:00';
+                                    container.allDay= 'true';
+                                    container.startRecur= props.start.date;
+                                    container.endRecur= props.end.date;
+  
+                                }
+                                else{
+                                    container.start= props.start.dateTime;
+                                    container.duration= '01:00';
+                                    container.time= props.start.dateTime;
+                                    container.allDay= 'false';
+                                    container.startRecur= props.start.dateTime;
+                                    container.endRecur= props.end.dateTime;
+  
+                                }
                             }
-                            else{
-                                container.start= props.start.date;
-                                container.time = '08:00';
-                                container.allDay= 'true';
+                            else if(props.orignalStartTime !== undefined)
+                            {
+                                if(props.orignalStartTime.dateTime === undefined)
+                                {
+                                    container.start= props.orignalStartTime.date;
+                                    container.time = '08:00';
+                                    container.allDay= 'true';
+                                    container.startRecur= props.orignalStartTime.date;
+                                    container.endRecur= props.end.date;
+  
+                                }
+                                else{
+                                    container.start= props.orignalStartTime.dateTime;
+                                    container.duration= '01:00';
+                                    container.time= props.orignalStartTime.dateTime;
+                                    container.allDay= 'false';
+                                    container.startRecur= props.orignalStartTime.dateTime;
+                                    container.endRecur= props.end.dateTime;
+  
+                                }
                             }
-                            container.startRecur= props.start.dateTime;
-                            container.endRecur= props.end.dateTime;
                             container.description= 'Google Calendar Event';
 
                             var index=index+1;
