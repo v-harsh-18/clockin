@@ -56,7 +56,7 @@
                         <%-include("components/popup")-%>
                         <div class="switch position" >
                             <div>
-                             <input  type="checkbox" class="darking" id="checkbox" onclick="changeImage()">
+                             <input  type="checkbox" class="darking" id="checkbox" >
                              <label for="checkbox" class="label">
                                 <i class="fas fa-moon"></i>
                                 <i class="fas fa-sun"></i>
@@ -235,6 +235,7 @@
         image.src = "img/dark-logo.png";
         var image = document.getElementById('logo-foot');
         image.src = "img/dark-logo.png";
+        document.getElementById("checkbox").checked = true;
         }
     }
         </script>
