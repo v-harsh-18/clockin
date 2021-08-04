@@ -179,6 +179,9 @@
                         {
                             document.getElementById('mlink').innerHTML = "Event Link: " + `<a href="` +eventObj.url + `" target='_blank'>` + eventObj.url + `</a>`;
                         }
+                        else{
+                            document.getElementById('mlink').innerHTML = "" ;
+                        }
                         document.getElementById('idi').setAttribute('value',eventObj.id);
                         
                     },
