@@ -174,8 +174,11 @@
                         document.getElementById('new').click();
                         document.getElementById('mtitle').innerHTML = "Event Title: " + eventObj.title;
                         document.getElementById('mdate').innerHTML = "Event Date: " + eventObj.start;
-                        // document.getElementById('mtime').innerHTML = "Event Time " + eventObj.time;
-                        document.getElementById('mlink').innerHTML = "Event Link: " + `<a href="` +eventObj.url + `" target='_blank'>` + eventObj.url + `</a>`;
+                        // document.getElementById('mtime').innerHTML = "Event Time: " + eventObj.time;
+                        if(eventObj.url !== "")
+                        {
+                            document.getElementById('mlink').innerHTML = "Event Link: " + `<a href="` +eventObj.url + `" target='_blank'>` + eventObj.url + `</a>`;
+                        }
                         document.getElementById('idi').setAttribute('value',eventObj.id);
                         
                     },
@@ -187,12 +190,6 @@
                 calendar.render();
             });
 
-            // const darkingSwitch = document.querySelector("input.darking");
-
-            // darkingSwitch.addEventListener('change', () => {
-            //     document.body.classList.toggle('dark-theme');
-            // });
-
         </script>
         <script>
             let theme = localStorage.getItem('data-theme');
@@ -203,8 +200,6 @@
         image.src = "img/dark-logo.png";
         var image = document.getElementById('logo-foot');
         image.src = "img/dark-logo.png";
-        // var video = document.getElementById('video-dark');
-        // video.src = "video/logo-dark-vid.mp4";
     }
     
     const changeThemeToLight = () => {
@@ -214,8 +209,6 @@
         image.src = "img/logo2.png";
         var image = document.getElementById('logo-foot');
         image.src = "img/logo2.png";
-        // var video = document.getElementById('video-dark');
-        // video.src = "video/logoFinal.mp4";
     }
     
     
@@ -239,30 +232,9 @@
         image.src = "img/dark-logo.png";
         var image = document.getElementById('logo-foot');
         image.src = "img/dark-logo.png";
-        // var video = document.getElementById('video-dark');
-        // video.src = "video/logo-dark-vid.mp4";
         }
     }
         </script>
-
-        <!-- <script>
-            function changeImage() {
-                var image = document.getElementById('logo2');
-                if (image.src.match("img/logo2.png")) {
-                    image.src = "img/dark-logo.png";
-                }
-                else {
-                    image.src = "img/logo2.png";
-                }
-                var image = document.getElementById('logo-foot');
-        if (image.src.match("img/logo2.png")) {
-            image.src = "img/dark-logo.png";
-        }
-        else {
-            image.src = "img/logo2.png";
-        }
-            }
-        </script> -->
 
         <script>
             document.addEventListener('DOMContentLoaded', function () {
@@ -306,12 +278,6 @@
                                 {
                                     dot: 'red',
                                     dates: Official,
-                                    // popover:
-                                    // {
-                                    // label: "bleh",
-                                    // visibility: click,
-                                    // dates: { weekdays: 6 },
-                                    // },
                                 },
                                 {
                                     dot:'purple',
