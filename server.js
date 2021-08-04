@@ -144,22 +144,26 @@ app.get("/calendar", function(req, res) {
                     var vbday = [];
                     var vofficial = [];
                     var vunofficial = [];
+                   
 
                     for (let i = 0; i < foundUser.events.length; i++) {
+                        var day = new Date(foundUser.events[i].rrule.until);
+                        var nextDay = new Date(day);
+                        nextDay.setDate(day.getDate() - 1);
                         if (foundUser.events[i].description === 'none') {
                             if (foundUser.events[i].rrule.freq === 'daily') {
-                                vnone.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `}`);
+                                vnone.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + nextDay + `"` + `}`);
                             } else if (foundUser.events[i].rrule.freq === 'weekly') {
                                 let d = new Date(`"` + foundUser.events[i].start + `"`);
                                 let n = d.getDay();
                                 let k = n+1;
-                                vnone.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `weekdays :` + `[` + k + `]` + `}`);
+                                vnone.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + nextDay + `"` + `,` + `weekdays :` + `[` + k + `]` + `}`);
 
                             } else if (foundUser.events[i].rrule.freq === 'monthly') {
                                 let l = 1;
                                 let d = new Date(`"` + foundUser.events[i].start + `"`);
                                 let n = d.getDate();
-                                vnone.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `monthlyInterval :` + l + `,` + `on :` + `[{` + `days : ` + n + `}]` + `}`);
+                                vnone.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + nextDay + `"` + `,` + `monthlyInterval :` + l + `,` + `on :` + `[{` + `days : ` + n + `}]` + `}`);
 
                             } else if (foundUser.events[i].rrule.freq === 'yearly') {
                                 let l = 1;
@@ -168,7 +172,7 @@ app.get("/calendar", function(req, res) {
                                 let m = d.getMonth();
                                 let k = 1;
                                 if(m!=12){k=m+1}
-                                vnone.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `yearlyInterval :` + l + `,` + `on :` + `[{` + `months : ` + k + `,` + `days : ` + n + `}` + `]` + `}`);
+                                vnone.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + nextDay + `"` + `,` + `yearlyInterval :` + l + `,` + `on :` + `[{` + `months : ` + k + `,` + `days : ` + n + `}` + `]` + `}`);
 
                             } else {
                                 vnone.push(`{` + `"` + foundUser.events[i].start + `"` + `}`);
@@ -177,18 +181,18 @@ app.get("/calendar", function(req, res) {
                         }
                         if (foundUser.events[i].description === 'official') {
                             if (foundUser.events[i].rrule.freq === 'daily') {
-                                vofficial.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `}`);
+                                vofficial.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + nextDay + `"` + `}`);
                             } else if (foundUser.events[i].rrule.freq === 'weekly') {
                                 let d = new Date(`"` + foundUser.events[i].start + `"`);
                                 let n = d.getDay();
                                 let k = n+1;
-                                vofficial.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `weekdays :` + `[` + k + `]` + `}`);
+                                vofficial.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + nextDay + `"` + `,` + `weekdays :` + `[` + k + `]` + `}`);
 
                             } else if (foundUser.events[i].rrule.freq === 'monthly') {
                                 let l = 1;
                                 let d = new Date(`"` + foundUser.events[i].start + `"`);
                                 let n = d.getDate();
-                                vofficial.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `monthlyInterval :` + l + `,` + `on :` + `[{` + `days : ` + n + `}]` + `}`);
+                                vofficial.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + nextDay + `"` + `,` + `monthlyInterval :` + l + `,` + `on :` + `[{` + `days : ` + n + `}]` + `}`);
 
                             } else if (foundUser.events[i].rrule.freq === 'yearly') {
                                 let l = 1;
@@ -197,7 +201,7 @@ app.get("/calendar", function(req, res) {
                                 let m = d.getMonth();
                                 let k = 1;
                                 if(m!=12){k=m+1};
-                                vofficial.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `yearlyInterval :` + l + `,` + `on :` + `[{` + `months : ` + k + `,` + `days : ` + n + `}` + `]` + `}`);
+                                vofficial.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + nextDay + `"` + `,` + `yearlyInterval :` + l + `,` + `on :` + `[{` + `months : ` + k + `,` + `days : ` + n + `}` + `]` + `}`);
 
                             } else {
                                 vofficial.push(`{` + `"` + foundUser.events[i].start + `"` + `}`);
@@ -206,18 +210,18 @@ app.get("/calendar", function(req, res) {
                         }
                         if (foundUser.events[i].description === 'unofficial') {
                             if (foundUser.events[i].rrule.freq === 'daily') {
-                                vunofficial.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `}`);
+                                vunofficial.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + nextDay + `"` + `}`);
                             } else if (foundUser.events[i].rrule.freq === 'weekly') {
                                 let d = new Date(`"` + foundUser.events[i].start + `"`);
                                 let n = d.getDay();
                                 let k = n+1;
-                                vunofficial.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `weekdays :` + `[` + k + `]` + `}`);
+                                vunofficial.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + nextDay + `"` + `,` + `weekdays :` + `[` + k + `]` + `}`);
 
                             } else if (foundUser.events[i].rrule.freq === 'monthly') {
                                 let l = 1;
                                 let d = new Date(`"` + foundUser.events[i].start + `"`);
                                 let n = d.getDate();
-                                vunofficial.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `monthlyInterval :` + l + `,` + `on :` + `[{` + `days : ` + n + `}]` + `}`);
+                                vunofficial.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + nextDay + `"` + `,` + `monthlyInterval :` + l + `,` + `on :` + `[{` + `days : ` + n + `}]` + `}`);
 
                             } else if (foundUser.events[i].rrule.freq === 'yearly') {
                                 let l = 1;
@@ -226,7 +230,7 @@ app.get("/calendar", function(req, res) {
                                 let m = d.getMonth();
                                 let k = 1;
                                 if(m!=12){k=m+1};
-                                vunofficial.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `yearlyInterval :` + l + `,` + `on :` + `[{` + `months : ` + k + `,` + `days : ` + n + `}` + `]` + `}`);
+                                vunofficial.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + nextDay + `"` + `,` + `yearlyInterval :` + l + `,` + `on :` + `[{` + `months : ` + k + `,` + `days : ` + n + `}` + `]` + `}`);
 
                             } else {
                                 vunofficial.push(`{` + `"` + foundUser.events[i].start + `"` + `}`);
@@ -235,18 +239,18 @@ app.get("/calendar", function(req, res) {
                         }
                         if (foundUser.events[i].description === 'bday') {
                             if (foundUser.events[i].rrule.freq === 'daily') {
-                                vbday.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `}`);
+                                vbday.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + nextDay + `"` + `}`);
                             } else if (foundUser.events[i].rrule.freq === 'weekly') {
                                 let d = new Date(`"` + foundUser.events[i].start + `"`);
                                 let n = d.getDay();
                                 let k = n+1;
-                                vbday.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `weekdays :` + `[` + k + `]` + `}`);
+                                vbday.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + nextDay + `"` + `,` + `weekdays :` + `[` + k + `]` + `}`);
 
                             } else if (foundUser.events[i].rrule.freq === 'monthly') {
                                 let l = 1;
                                 let d = new Date(`"` + foundUser.events[i].start + `"`);
                                 let n = d.getDate();
-                                vbday.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `monthlyInterval :` + l + `,` + `on :` + `[{` + `days : ` + n + `}]` + `}`);
+                                vbday.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + nextDay + `"` + `,` + `monthlyInterval :` + l + `,` + `on :` + `[{` + `days : ` + n + `}]` + `}`);
 
                             } else if (foundUser.events[i].rrule.freq === 'yearly') {
                                 let l = 1;
@@ -255,7 +259,7 @@ app.get("/calendar", function(req, res) {
                                 let m = d.getMonth();
                                 let k = 1;
                                 if(m!=12){k=m+1};
-                                vbday.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `yearlyInterval :` + l + `,` + `on :` + `[{` + `months : ` + k + `,` + `days : ` + n + `}` + `]` + `}`);
+                                vbday.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + nextDay + `"` + `,` + `yearlyInterval :` + l + `,` + `on :` + `[{` + `months : ` + k + `,` + `days : ` + n + `}` + `]` + `}`);
 
                             } else {
                                 vbday.push(`{` + `"` + foundUser.events[i].start + `"` + `}`);
@@ -264,18 +268,18 @@ app.get("/calendar", function(req, res) {
                         }
                         if (foundUser.events[i].description === 'misc') {
                             if (foundUser.events[i].rrule.freq === 'daily') {
-                                vmisc.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `}`);
+                                vmisc.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + nextDay + `"` + `}`);
                             } else if (foundUser.events[i].rrule.freq === 'weekly') {
                                 let d = new Date(`"` + foundUser.events[i].start + `"`);
                                 let n = d.getDay();
                                 let k = n+1;
-                                vmisc.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `weekdays :` + `[` + k + `]` + `}`);
+                                vmisc.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + nextDay + `"` + `,` + `weekdays :` + `[` + k + `]` + `}`);
 
                             } else if (foundUser.events[i].rrule.freq === 'monthly') {
                                 let l = 1;
                                 let d = new Date(`"` + foundUser.events[i].start + `"`);
                                 let n = d.getDate();
-                                vmisc.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `monthlyInterval :` + l + `,` + `on :` + `[{` + `days : ` + n + `}]` + `}`);
+                                vmisc.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + nextDay + `"` + `,` + `monthlyInterval :` + l + `,` + `on :` + `[{` + `days : ` + n + `}]` + `}`);
 
                                 
                             } else if (foundUser.events[i].rrule.freq === 'yearly') {
@@ -285,7 +289,7 @@ app.get("/calendar", function(req, res) {
                                 let m = d.getMonth();
                                 let k = 1;
                                 if(m!=12){k=m+1};
-                                vmisc.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].rrule.until + `"` + `,` + `yearlyInterval :` + l + `,` + `on :` + `[{` + `months : ` + k + `,` + `days : ` + n + `}` + `]` + `}`);
+                                vmisc.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + nextDay + `"` + `,` + `yearlyInterval :` + l + `,` + `on :` + `[{` + `months : ` + k + `,` + `days : ` + n + `}` + `]` + `}`);
 
                             } else {
                                 vmisc.push(`{` + `"` + foundUser.events[i].start + `"` + `}`);
@@ -391,9 +395,12 @@ app.post("/calendar", function(req, res) {
     const description = req.body.description;
     const repeat = req.body.repeat;
     if (req.body.repeat !== "none") {
+        var day = new Date(req.body.until);
+        var nextDay = new Date(day);
+        nextDay.setDate(day.getDate() + 1);
         dtstart = req.body.date;
         freq = req.body.repeat;
-        until = req.body.until;
+        until = nextDay.toISOString();
 
     };
     tm = req.body.time;
