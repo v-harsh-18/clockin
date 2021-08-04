@@ -607,6 +607,6 @@ app.post("/delete", function(req, res) {
 });
 
 
-app.listen(3003, () => {
+app.listen(process.env.PORT || 3003, () => {
     console.log('CONNECTION ESTABLISHED ON PORT 3003')
 });
