@@ -415,26 +415,61 @@ app.post("/calendar", function(req, res) {
     mnth = req.body.date[5] + req.body.date[6];
 
     wk = id.getDay();
+    let output = ``;
+    let remind = ``;
 
-
-    const output = `
-    <h3>You have a new event scheduled !!</h3>
-    <h2 style="font-size:2em">Event Details</h2>
-      <p style="font-size:1.2em"><b>Description:</b> ${req.body.title}</p>
-      <p style="font-size:1.2em"><b>Date:</b> ${req.body.date}</p>
-      <p style="font-size:1.2em"><b>Time:</b> ${req.body.time}</p>
-      <p>You will receive a reminder before the start of the scheduled event.</p>
-      <p>This is an auto-generated mail. Please do not reply.</p>
+    if(link !== "")
+    {
+     output = `
+    <div style="background-color: #e1f2ee">
+        <h1 style="text-align: center">You have a new event scheduled !!</h1>
+        <h2 style="font-size:2em; text-align: center">Event Details</h2>
+          <p style="font-size:1.2em ; text-align: center;"><b>Title:</b> ${req.body.title}</p>
+          <p style="font-size:1.2em; text-align: center;"><b>Date:</b> ${req.body.date}</p>
+          <p style="font-size:1.2em; text-align: center;"><b>Time:</b> ${req.body.time}</p>
+          <p style="font-size: 1.2em; text-align: center;"><b>Link:</b> ${req.body.link}</p>
+          <p style="text-align: center;">You will receive a reminder before the start of the scheduled event.</p>
+          <p style="text-align: center;">This is an auto-generated mail. Please do not reply.</p>
+          </div>
   `;
 
-    const remind = `
-    <h3>Reminder !!</h3>
-    <h2 style="font-size:2em">Event Details</h2>
-      <p style="font-size:1.2em"><b>Description:</b> ${req.body.title}</p>
-      <p style="font-size:1.2em"><b>Date:</b> ${req.body.date}</p>
-      <p style="font-size:1.2em"><b>Time:</b> ${req.body.time}</p>
-      <p>This is an auto-generated mail. Please do not reply.</p>    
+    remind = `
+    <div style="background-color: #e1f2ee ;">
+            <h1 style="text-align: center;">Reminder !!</h1>
+            <h2 style="font-size:2em; text-align: center;">Event Details</h2>
+              <p style="font-size:1.2em ; text-align: center;"><b>Title:</b> ${req.body.title}</p>
+              <p style="font-size:1.2em ; text-align: center;"><b>Date:</b> ${req.body.date}</p>
+              <p style="font-size:1.2em ; text-align: center;"><b>Time:</b> ${req.body.time}</p>
+              <p style="font-size: 1.2em; text-align: center;"><b>Link:</b> ${req.body.link}</p>
+              <p style="text-align: center;">This is an auto-generated mail. Please do not reply.</p>  
+            </div>    
   `;
+    }
+    else
+    {
+    output = `
+    <div style="background-color: #e1f2ee">
+        <h1 style="text-align: center">You have a new event scheduled !!</h1>
+        <h2 style="font-size:2em; text-align: center">Event Details</h2>
+          <p style="font-size:1.2em ; text-align: center;"><b>Title:</b> ${req.body.title}</p>
+          <p style="font-size:1.2em; text-align: center;"><b>Date:</b> ${req.body.date}</p>
+          <p style="font-size:1.2em; text-align: center;"><b>Time:</b> ${req.body.time}</p>
+          <p style="text-align: center;">You will receive a reminder before the start of the scheduled event.</p>
+          <p style="text-align: center;">This is an auto-generated mail. Please do not reply.</p>
+          </div>
+  `;
+
+    remind = `
+    <div style="background-color: #e1f2ee ;">
+            <h1 style="text-align: center;">Reminder !!</h1>
+            <h2 style="font-size:2em; text-align: center;">Event Details</h2>
+              <p style="font-size:1.2em ; text-align: center;"><b>Title:</b> ${req.body.title}</p>
+              <p style="font-size:1.2em ; text-align: center;"><b>Date:</b> ${req.body.date}</p>
+              <p style="font-size:1.2em ; text-align: center;"><b>Time:</b> ${req.body.time}</p>
+              <p style="text-align: center;">This is an auto-generated mail. Please do not reply.</p>  
+            </div>    
+  `;
+    }
 
     let transporter = nodemailer.createTransport({
         service: 'gmail',
