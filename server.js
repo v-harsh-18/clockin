@@ -175,7 +175,7 @@ app.get("/calendar", function(req, res) {
                                 vnone.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + nextDay + `"` + `,` + `yearlyInterval :` + l + `,` + `on :` + `[{` + `months : ` + k + `,` + `days : ` + n + `}` + `]` + `}`);
 
                             } else {
-                                vnone.push(`{` + `"` + foundUser.events[i].start + `"` + `}`);
+                                vmisc.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].start + `"`+ `}`);
                             }
 
                         }
@@ -204,7 +204,7 @@ app.get("/calendar", function(req, res) {
                                 vofficial.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + nextDay + `"` + `,` + `yearlyInterval :` + l + `,` + `on :` + `[{` + `months : ` + k + `,` + `days : ` + n + `}` + `]` + `}`);
 
                             } else {
-                                vofficial.push(`{` + `"` + foundUser.events[i].start + `"` + `}`);
+                                vmisc.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].start + `"`+ `}`);
                             }
 
                         }
@@ -233,7 +233,7 @@ app.get("/calendar", function(req, res) {
                                 vunofficial.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + nextDay + `"` + `,` + `yearlyInterval :` + l + `,` + `on :` + `[{` + `months : ` + k + `,` + `days : ` + n + `}` + `]` + `}`);
 
                             } else {
-                                vunofficial.push(`{` + `"` + foundUser.events[i].start + `"` + `}`);
+                                vmisc.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].start + `"`+ `}`);
                             }
 
                         }
@@ -262,7 +262,7 @@ app.get("/calendar", function(req, res) {
                                 vbday.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + nextDay + `"` + `,` + `yearlyInterval :` + l + `,` + `on :` + `[{` + `months : ` + k + `,` + `days : ` + n + `}` + `]` + `}`);
 
                             } else {
-                                vbday.push(`{` + `"` + foundUser.events[i].start + `"` + `}`);
+                                vmisc.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].start + `"`+ `}`);
                             }
 
                         }
@@ -292,7 +292,7 @@ app.get("/calendar", function(req, res) {
                                 vmisc.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + nextDay + `"` + `,` + `yearlyInterval :` + l + `,` + `on :` + `[{` + `months : ` + k + `,` + `days : ` + n + `}` + `]` + `}`);
 
                             } else {
-                                vmisc.push(`{` + `"` + foundUser.events[i].start + `"` + `}`);
+                                vmisc.push(`{` + `start: ` + `"` + foundUser.events[i].start + `"` + `,` + `end :` + `"` + foundUser.events[i].start + `"`+ `}`);
                             }
 
                         }
@@ -395,9 +395,6 @@ app.get("/calendar", function(req, res) {
 
                     let length=newEvents.length;
 
-                    console.log(newEvents);
-
-                    console.log("New Events before rendering\n", newEvents);
                     res.render("calendar", { idpic: foundUser.picture, idname: foundUser.fname, gevents: newEvents, events: foundUser.events, vnone: vnone, vofficial: vofficial, vunofficial: vunofficial, vbday: vbday, vmisc: vmisc, length:length});
                 }
             }
@@ -420,15 +417,19 @@ app.post("/calendar", function(req, res) {
     let dtstart;
     let freq;
     let until;
+    let new1;
+    let new2;
     const description = req.body.description;
     const repeat = req.body.repeat;
     if (req.body.repeat !== "none") {
-        var day = new Date(req.body.until);
+        var day=new Date(req.body.until);
         var nextDay = new Date(day);
         nextDay.setDate(day.getDate() + 1);
         dtstart = req.body.date;
         freq = req.body.repeat;
         until = nextDay.toISOString();
+        new1=dtstart+'T'+time+":00";
+        new2=new Date(new1).toISOString();
 
     };
     tm = req.body.time;
@@ -530,11 +531,11 @@ app.post("/calendar", function(req, res) {
 
         res.render('contact', { msg: 'Email has been sent' });
     });
-
+    
 
     const event = new Event({
         title: title,
-        start: date,
+        start: date+'T'+time+':00',
         time: time,
         url: link,
         _id: id,
@@ -543,7 +544,7 @@ app.post("/calendar", function(req, res) {
         allDay: false,
         description: description,
         rrule: {
-            dtstart: dtstart + 'T' + time + ':00',
+            dtstart: new2,
             freq: freq,
             until: until
         },
