@@ -15,11 +15,12 @@ const nodemailer = require('nodemailer');
 const axios = require('axios');
 const { response } = require('express');
 const { MongoNetworkTimeoutError } = require('mongodb');
+const path = require('path')
+
 
 const app = express();
 
-
-app.use(express.static(__dirname + '/public'));
+app.use('/static', express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
     extended: true
