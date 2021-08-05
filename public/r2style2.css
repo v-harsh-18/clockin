@@ -1,0 +1,303 @@
+.bg-body{
+    background-color: #fff;
+    background-color: var(--navigationbg)!important;
+}
+
+body{
+    background-color: var(--navigationbg)!important;
+}
+nav{
+    height: auto;
+    width: 100%;
+    margin-top: 0px;
+}
+.shadow {
+    box-shadow: 0 .5rem 1rem var(--ldshadow)!important;
+}
+
+.logo{
+    display: inline-block;
+}
+
+.logo2{
+ 
+    height: 100px;
+    padding-left: 15px;
+
+}
+
+.searchbar{
+    border: solid 1px black;
+    border-radius: 10px;
+    font-size: 1.25rem;
+    height: 47px;
+    margin-right: -0.5rem;
+    margin-top: 1px;
+    width: 20rem;
+    padding-left: 1rem;
+}
+
+.sign_out{
+    float: right;
+    margin-right: 2rem;
+    margin-top: 1.5rem;
+}
+
+.calendar {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+    font-size: 14px;
+    border-bottom:  1px solid rgb(219, 219, 217);
+  }
+  
+  #calendar{
+    max-width: 1100px;
+    margin-top: 55px;
+    width: 100%;
+    margin-right: 1rem;
+    margin-left: .5rem;
+    padding-right: 1rem;
+}
+
+  .box{
+      display:flex;
+      flex-direction: row-reverse;
+      width: 100%;
+    }
+
+    #app{
+            max-width: 1100px;
+            margin:  3rem 1rem 3rem 2rem ;
+            width: 85%;
+            height:40vh;
+    }
+    .sidecal{
+    font-family:Open sans;
+    font-size: 5px;
+    display: none;
+
+    
+    }
+
+    .button{
+        display: flex;
+        justify-content: center;
+        margin:auto;
+        align-items: center;
+        margin: auto;
+    }
+    .info{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 3rem;
+        margin: auto;
+        padding-top: 1rem;
+    }
+
+    .profileimg{
+        height: 4rem;
+        border-radius: 2rem;
+        margin-bottom: 1rem;
+    }
+    .profilename{
+        font-family: 'Ubuntu', sans-serif;
+        font-size: x-large;
+    }
+
+    .row>* {
+        display: flex;
+    }
+
+    .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
+        color: #fff;
+        background-color:#3b3e48;
+        border-color:#3b3e48;
+    }
+    .btn-primary {
+        color: #fff;
+        background-color: var(--buttons);
+        border-color: var(--buttons);
+    }
+
+    .btn-primary:hover{
+        background-color: var(--hbuttons);
+        border-color: var(--hbuttons);
+    }
+
+    .btn-primary:active{
+        background-color: var(--hbuttons);
+        border-color: var(--hbuttons);
+    }
+    tbody, td, tfoot, th, thead, tr {
+        border-color: inherit;
+        border-style: solid;
+        border-width: 0;
+        background-color: #ffffff;
+    }
+
+    .fc-daygrid-event-dot {
+        margin: 0 4px;
+        box-sizing: content-box;
+        width: 0;
+        height: 0;
+        border: calc(var(--fc-daygrid-event-dot-width,8px)/ 2) solid var(--fc-event-border-color,#3788d8);
+        border: 4px solid #418966;
+        border-radius: 4px;
+        border-radius: calc(var(--fc-daygrid-event-dot-width,8px)/ 2);
+    }
+
+    .fc .fc-daygrid-day-frame {
+        position: relative;
+        min-height: 100%;
+        background-color: var(--grid);
+    }
+
+    .fc-scrollgrid-sync-inner{
+        background-color: var(--grid);
+    }
+
+    .vc-container.vc-is-expanded {
+        min-width: 100%;
+        background-color: var(--grid);
+    }
+    .fc-day-today > .fc-daygrid-day-frame{
+        background-color: var(--todayc);
+      }
+
+
+    .vc-title[data-v-74ad501d]{
+        color: var(--vctext)!important;
+    }
+
+    .vc-day-content[data-v-4420d078]{
+        color: var(--vctext)!important;
+    }
+
+    .fc-theme-bootstrap a:not([href]){
+        color: var(--fctext);
+    }
+
+    .fc .fc-toolbar-title{
+        color: var(--fcmonth);
+    }
+
+    .fc-h-event .fc-event-title-container{
+        background-color: var(--eventc);
+        color: var(--eventt);
+        border: var(--eventc);
+    }
+
+    .fc .fc-list-day-cushion, .fc .fc-list-table td , .table-bordered thead th, .table-bordered thead td , .fc .fc-scroller-liquid-absolute , .fc-timegrid-slot-minor , .fc .fc-timegrid-slot ,.fc .fc-list-empty , .fc-scroller-liquid , .fc .fc-timegrid-axis-frame{
+        background-color: var(--grid);
+    }
+
+    .modal-content{
+        background-color: var(--formbg);
+    }
+
+    .form-label , .modal-title{
+        color: var(--formtext);
+    }
+    .blank{
+        height: 2rem;
+    }
+    footer{
+        height:4.5rem;
+        width:100%;
+        margin:0px;
+    
+    }
+    
+    .foot{
+        margin-top:0.3rem;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .logo-foot{
+     
+            height: 60px;
+            padding-left: 15px;
+            padding-right:2rem;
+    }
+    
+    .text-foot{
+        padding:.1rem;
+        color: var(--copyright);
+        font-size: 1.5rem;
+        font-family: 'Ubuntu';
+        padding-left:1rem;
+        font-weight: bold;
+     
+    }
+    .copyright{
+        padding: 1rem;
+        margin-top: 1rem;
+        margin-left: 1.5rem;
+        color: var(--copyright);
+    }
+    .fshadow{
+        box-shadow: 0 -.25rem 1rem var(--ldshadow)!important;
+    }
+
+    :root{
+        --black: #000000;
+        --white: #ffffff;
+        --minty: #93e9be;
+        --nminty: #6c1641;
+        --lightgrey: #e2e8f0 ;
+        --minty2: #78c2ad;
+        --nminty2: #873d52;
+        --fcgrey: #888888;
+        --eblue: #9099aa;
+        --leblue: #2477f2;
+        --formgrey: #36404d;
+        --grey: grey;
+        --lsblack: rgba(0,0,0,0.15);
+        --dswhite:rgba(255, 245, 245, 0.15);
+        --ltoday: rgb(229, 255, 229);
+        --dtoday: #743353;
+         
+    } 
+
+    body[data-theme='light']{
+        --navigationbg: var(--white);
+        --buttons: var(--minty);
+        --hbuttons: var(--minty2);
+        --grid: var(--white);
+        --vctext: var(--black);
+        --fcdate: var(--fcgrey);
+        --fcmonth: var(--fcmgrey);
+        --eventc: var(--leblue);
+        --eventt: var(--white);
+        --formbg: var(--white);
+        --formtext: var(--black);
+        --copyright: var(--black);
+        --ldshadow: var(--lsblack);
+        --todayc: var(--ltoday);
+    }
+    
+    
+    body[data-theme='dark']{
+        --navigationbg: var(--black);
+        --buttons: var(--nminty);
+        --hbuttons: var(--nminty2);
+        --grid:var(--formgrey);
+        --vctext: var(--lightgrey);
+        --fcdate: var(--lightgrey);
+        --fcmonth: var(--lightgrey);
+        --eventc: var(--eblue);
+        --eventt: var(--black);
+        --formbg: var(--formgrey);
+        --formtext: var(--lightgrey);
+        --copyright: var(--grey);
+        --ldshadow: var(--dswhite);
+        --todayc: var(--dtoday);
+    }
+    
+    * {
+        transition: background-color 0.5s ease, color 1s ease;
+      }
