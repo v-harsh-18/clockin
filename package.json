@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/v-harsh-18/clockin#readme",
   "engines": {
-    "node": "14.17.2"
+    "node": "14.17.2",
+    "npm": "6.14.13"
   },
   "dependencies": {
     "axios": "^0.21.1",
