@@ -17,6 +17,9 @@
     "url": "https://github.com/v-harsh-18/clockin/issues"
   },
   "homepage": "https://github.com/v-harsh-18/clockin#readme",
+  "engines": {
+    "node": "14.17.2"
+  },
   "dependencies": {
     "axios": "^0.21.1",
     "body-parser": "^1.19.0",
