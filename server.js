@@ -93,23 +93,29 @@ let email = "";
 passport.use(new GoogleStrategy({
         clientID: process.env.CLIENT_ID,
         clientSecret: process.env.CLIENT_SECRET,
-        callbackURL: "https://stark-stream-65104.herokuapp.com/auth/google/clockin",
+        callbackURL: "https://obscure-everglades-41187.herokuapp.com/auth/google/clockin",
+
+        // callbackURL: "http://localhost:3003/auth/google/clockin",
         userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo",
         passReqToCallback: true,
 
     },
     function(req, accessToken, refreshToken, profile, cb) {
+
+
         console.log(profile);
         currentid = profile.id;
+        req.session.new=profile.id;
         email = profile.emails[0].value;
-
+        
         User.findOrCreate({ username: profile.emails[0].value, googleId: profile.id, picture: profile.photos[0].value, fname: profile.displayName }, function(err, user) {
             req.session.accessToken = accessToken;
             req.session.refreshToken = refreshToken
             return cb(err, user);
         });
     }
-));
+    ));
+    
 
 
 
@@ -130,8 +136,10 @@ app.get("/auth/google/clockin",
 
 app.get("/calendar", function(req, res) {
 
+
+
     if (req.isAuthenticated()) {
-        User.findOne({ googleId: currentid }, async function(err, foundUser) {
+        User.findOne({ googleId: req.session.new}, async function(err, foundUser) {
             if (err) {
                 console.log(err);
             } else {
@@ -408,6 +416,8 @@ let tm = "";
 
 var vnone = [];
 app.post("/calendar", function(req, res) {
+
+    
     const title = req.body.title;
     const date = req.body.date;
     const time = req.body.time;
@@ -427,8 +437,6 @@ app.post("/calendar", function(req, res) {
         dtstart = req.body.date;
         freq = req.body.repeat;
         until = nextDay.toISOString();
-        new1=dtstart+'T'+time+":00";
-        new2=new Date(new1).toISOString();
 
     };
     tm = req.body.time;
@@ -543,14 +551,14 @@ app.post("/calendar", function(req, res) {
         allDay: false,
         description: description,
         rrule: {
-            dtstart: new2,
+            dtstart: dtstart+'T'+time+":00",
             freq: freq,
             until: until
         },
 
     })
 
-    User.findOne({ googleId: currentid }, function(err, foundUser) {
+    User.findOne({ googleId: req.session.new}, function(err, foundUser) {
         foundUser.events.push(event);
         foundUser.save();
         res.redirect("/calendar");
@@ -588,7 +596,7 @@ app.post("/delete", function(req, res) {
         res.redirect('/calendar');
     }
     else{
-    User.findOne({ googleId: currentid }, function(err, foundUser) {
+    User.findOne({ googleId: req.session.new}, function(err, foundUser) {
         if (err) {
             console.log(err);
         } else {
