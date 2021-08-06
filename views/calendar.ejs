@@ -1,4 +1,328 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <link rel="icon" type="image/png" href="img/Copy of C.png" />
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css' rel='stylesheet' />
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.css' rel='stylesheet' />
+    <link href='https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.1/css/all.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,600,800,900">
+    <link rel="stylesheet" href="css/popup.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="//cdn.jsdelivr.net/npm/bootswatch@5.0.2/dist/minty/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" media="screen and (max-width:600px)" href="css/r1style2.css">
+    <link rel="stylesheet" media="screen and (min-width:601px)" href="css/r2style2.css">
+    <link rel="stylesheet" media="screen and (min-width:992px)" href="css/two.css">
+
+<link rel="stylesheet" href="css/darkmode.css">
+
+
+
+
+
+</head>
+
+<body data-theme = "light"   id="HTML" onload="changing()">
+
+    <%-include("components/navbar")-%>
+    
+        <div class="box">
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="info">
+                            <img src="<%= idpic %> " class="profileimg" />
+                            <div class="profilename">
+                                <%= idname %>
+
+                            </div>
+                        </div>
+                        <div id='app' class="sidecal">
+
+                            
+                            <v-calendar is-expanded :columns="$screens(1)" :from-date="new Date()"
+                                :attributes="attributes" 
+                                />
+
+                        </div>
+
+                        <%-include("components/popup")-%>
+                        <div class="switch position" >
+                            <div>
+                             <input  type="checkbox" class="darking" id="checkbox" >
+                             <label for="checkbox" class="label">
+                                <i class="fas fa-moon"></i>
+                                <i class="fas fa-sun"></i>
+                                <div class="ball"></div>
+                            </label>
+                           </div>
+                        </div>
+                        
+                    </div>
+                    <div class="calendar col-lg-8" id="calendar"></div>
+                </div>
+            </div>
+        </div>
+        <div style="display:none">
+            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1" id="new">
+            </button>
+        </div>
+        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        
+            <div class="modal-dialog">
+        
+                <div class="modal-content">
+        
+                    <div class="modal-header">
+        
+                        <h5 class="modal-title" id="exampleModalLabel">Event Details</h5>
+        
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        
+                    </div>
+        
+                    <div class="modal-body">
+        
+                        <form action="/delete" method="POST">
+        
+        
+        
+                            <div id="mtitle"></div>
+        
+                            <div id="mdate"></div>
+        
+                            <div id="mtime"></div>
+                            <div id="mlink"></div>
+        
+                            <div id="freq"></div>
+                            <button class="btn btn-primary submit" type="submit" id="idi" name="idi" onclick="hideDelete()">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="blank" >
+
+        </div>
+       
+        <footer class="fshadow foot">
+            <div class="logo">
+                <img class="logo-foot" id="logo-foot" src="img/logo2.png">
+            </div>
+            <div class="text-foot">Try ClockIn now</div>
+            <p class="copyright">&copy; copyright 2021 ClockIn</p>
+        
+    
+        </footer>
+
+        <div id="new1" arr="<%=JSON.stringify(gevents)%>">
+        </div>
+       
+
+        <script>
+
+            document.addEventListener('DOMContentLoaded', function () {
+                var calendarEl = document.getElementById('calendar');
+                let devents=[<%-events%>];
+                console.log(devents);
+
+                let reminder=JSON.parse(document.getElementById("new1").getAttribute('arr'));
+
+                let greminder=[];
+                let length=<%-length%>;
+
+                for(let i=0;i<length;i++)
+                {
+                    let obj={
+                        title:reminder[i].title,
+                        start:reminder[i].start,
+                        id:reminder[i].id,
+                        time:"08:00",
+                        allDay:false
+                    }
+
+                    greminder.push(obj);
+                }
+
+                var newarray = devents.concat(greminder);
+                console.log(newarray);
+
+                var calendar = new FullCalendar.Calendar(calendarEl, {
+                    selectable: true,
+                    themeSystem: 'bootstrap',
+                    headerToolbar: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'dayGridMonth,timeGridWeek,listWeek'
+                    },
+                    dayMaxEvents: true,
+                    showNonCurrentDates: false,
+                    fixedWeekCount: false,
+                    eventClick: function (info) {
+                        info.jsEvent.preventDefault();
+                        var eventObj = info.event;
+                        console.log(eventObj.id);
+                        document.getElementById('new').click();
+                        document.getElementById('mtitle').innerHTML = "Event Title: " + eventObj.title;
+                        document.getElementById('mdate').innerHTML = "Event Date: " + eventObj.start;
+                        // document.getElementById('mtime').innerHTML = "Event Time: " + eventObj.time;
+                        if(eventObj.url !== "")
+                        {
+                            document.getElementById('mlink').innerHTML = "Event Link: " + `<a href="` +eventObj.url + `" target='_blank'>` + eventObj.url + `</a>`;
+                        }
+                        else{
+                            document.getElementById('mlink').innerHTML = "" ;
+                        }
+                        document.getElementById('idi').setAttribute('value',eventObj.id);
+                        
+                    },
+                    timeZone: 'UTC',
+            
+                    events: newarray,
+
+                });
+
+                calendar.render();
+            });
+
+        </script>
+        <script>
+            let theme = localStorage.getItem('data-theme');
+    const changeThemeToDark = () => {
+        document.getElementById("HTML").setAttribute("data-theme", "dark") // set theme to dark
+        localStorage.setItem("data-theme", "dark") // save theme to local storage
+        var image = document.getElementById('logo2');
+        image.src = "img/dark-logo.png";
+        var image = document.getElementById('logo-foot');
+        image.src = "img/dark-logo.png";
+    }
+    
+    const changeThemeToLight = () => {
+        document.getElementById("HTML").setAttribute("data-theme", "light") // set theme light
+        localStorage.setItem("data-theme", 'light') // save theme to local storage
+        var image = document.getElementById('logo2');
+        image.src = "img/logo2.png";
+        var image = document.getElementById('logo-foot');
+        image.src = "img/logo2.png";
+    }
+    
+    
+    const checkbox = document.getElementById("checkbox");
+    let bleh;
+    checkbox.addEventListener('change', () => {
+        let theme = localStorage.getItem('data-theme'); // Retrieve saved them from local storage
+        if (theme ==='dark'){
+            changeThemeToLight()
+        }else{
+            changeThemeToDark()
+        }   
+        bleh = localStorage.getItem('data-theme');
+    });
+    
+    function changing(){
+        document.getElementById("HTML").setAttribute("data-theme", localStorage.getItem('data-theme')) ;
+        if(localStorage.getItem('data-theme')==="dark")
+        {
+            var image = document.getElementById('logo2');
+        image.src = "img/dark-logo.png";
+        var image = document.getElementById('logo-foot');
+        image.src = "img/dark-logo.png";
+        document.getElementById("checkbox").checked = true;
+        }
+    }
+        </script>
+
+        <script>
+
+        function hideDelete() {
+        document.getElementById("idi").style.display = "none";
+        }
+
+        function hideSave() {
+        document.getElementById("save").style.display = "none";
+        }
+
+
+            document.addEventListener('DOMContentLoaded', function () {
+                let reminder=JSON.parse(document.getElementById("new1").getAttribute('arr'));
+
+                let greminder=[];
+                let length=<%-length%>;
+
+                for(let i=0;i<length;i++)
+                {
+                    greminder.push(reminder[i].start);
+                }
+
+                let None = [<%-vnone%>]
+                let Official = [<%-vofficial%>]
+                let Unofficial = [<%-vunofficial%>]
+                let Bday = [<%-vbday%>]
+                let Misc = [<%-vmisc%>]
+                new Vue({
+                    el: '#app',
+                    data() {
+                        return {
+                            attributes: [
+                                {
+                                    dot: 'blue',
+                                    dates: None,
+                                    
+                                },
+                                {
+                                    dot: 'pink',
+                                    dates: Misc,
+                                },
+                                {
+                                    dot: 'yellow',
+                                    dates: Unofficial,
+                                },
+                                {
+                                    dot: 'teal',
+                                    dates: Bday,
+                                },
+                                {
+                                    dot: 'red',
+                                    dates: Official,
+                                },
+                                {
+                                    dot:'purple',
+                                    dates: greminder,
+                                },
+
+                            ],
+                        };
+                    }
+
+                });
+
+            });
+        </script>
+
+        <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js'></script>
+        <script type="text/javascript" charset="utf-8"></script>
+        <script src='https://unpkg.com/vue/dist/vue.js'></script>
+        <script src='https://unpkg.com/v-calendar'></script>
+        <script src='https://cdn.jsdelivr.net/npm/rrule@2.6.4/dist/es5/rrule.min.js'></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+        <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/rrule@5.5.0/main.global.min.js'></script>
+
+
+</body>
+
+</html>
 <html lang="en">
 
 <head>
