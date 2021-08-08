@@ -96,8 +96,8 @@ passport.use(new GoogleStrategy({
         // callbackURL: "https://obscure-everglades-41187.herokuapp.com/auth/google/clockin",
 
         // callbackURL: "http://localhost:3003/auth/google/clockin",
-        // callbackURL: "https://clockin-india.herokuapp.com/auth/google/clockin",
-        callbackURL: "https://calm-sands-71759.herokuapp.com/auth/google/clockin",
+        callbackURL: "https://clockin-india.herokuapp.com/auth/google/clockin",
+        // callbackURL: "https://calm-sands-71759.herokuapp.com/auth/google/clockin",
 
         userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo",
         passReqToCallback: true,
