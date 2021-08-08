@@ -1,0 +1,275 @@
+.bg-body{
+    background-color: #fff;
+    background-color: var(--navigationbg)!important;
+}
+
+body{
+    background-color: var(--navigationbg)!important;
+}
+nav{
+    height: auto;
+    position: fixed;
+    width: 100%;
+    margin-top: 0px;
+}
+
+.modal-backdrop {
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 1040;
+    width: 100vw;
+    height: 100vh;
+    background-color:#000000;
+}
+
+.shadow {
+    box-shadow: 0 .5rem 1rem var(--ldshadow)!important;
+}
+
+.logo{
+    display: inline-block;
+}
+
+.logo2{
+ 
+    height: 100px;
+    padding-left: 15px;
+}
+
+.logo2-darkt{
+    height: 100px;
+    padding-left: 15px;
+    -webkit-filter: invert(1);
+    filter: invert(1);
+}
+
+.button{
+    float: right;
+    margin-right: 2rem;
+    margin-top: 1.5rem;
+}
+
+.video{
+    height: 20rem;
+    width: 23rem;
+    margin-top: 3rem;
+    margin-left: auto;
+}
+
+.vidpanel{
+    align-items: center;
+}
+
+.name{
+    margin: auto;
+    padding-left: 0rem;
+    padding-top: 4rem;
+}
+
+.heading{
+    font-size: 13rem;
+    margin-left: -2rem;
+    display: inline-block;
+    color:var(--clocktext)!important;
+}
+
+.In{
+    color: var(--intext)!important;
+}
+
+.row{
+    margin-top: 0px;
+    padding-top: 130px;
+}
+
+.panel1{
+
+    height: 500px;
+    background-image: url('../img/two.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    padding-left: 20px;
+    margin-top: 55px;
+    
+}
+.panel1text{
+    display: flex;
+    flex-direction: row;
+
+}
+.para1{
+    display: inline-block;
+    font-family: 'Ubuntu', sans-serif;
+    color: white;
+    margin-left: 4rem;
+    margin-top: 120px;
+}
+.p1{
+    
+    font-size: 70px;
+    line-height:0px;
+}
+.p2{
+    font-size: 100px;
+    line-height:65px;
+}
+.p3{
+    font-size: 80px;
+    line-height:65px;
+}
+
+.features {
+    padding: 7% 15%;
+    margin-top: 0rem;
+}
+
+.rowf{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.icon{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.panellogos{
+    fill: var(--panellogos);
+}
+
+.ftext{
+    font-family: 'Ubuntu', sans-serif;
+    text-align: center;
+    margin-top: 5%;
+    font-weight: bold;
+    color: var(--ftext);
+}
+
+.icon2{
+    margin-top: 6%;
+}
+
+.ftexting{
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+    color: grey;
+}
+
+.panel3{
+    background-image: url('../img/one.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 30rem;
+    display:flex;
+    align-items:flex-end;
+    flex-direction:row-reverse;
+
+}
+
+.ptext{
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+
+.p3text1{
+    padding:1rem;
+     color: white;
+     font-size: 3.5rem;
+     font-family: 'Ubuntu';
+
+}
+.p3text2{
+    padding:1rem;
+     color: white;
+     font-size: 1.5rem;
+     font-family: 'Ubuntu';
+     padding-top: 0;
+
+}
+
+footer{
+    height:4.5rem;
+    width:100%;
+    margin:0px;
+
+}
+
+.foot{
+    margin-top:0.3rem;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-foot{
+ 
+        height: 60px;
+        padding-left: 15px;
+        padding-right:2rem;
+}
+
+.text-foot{
+    padding:.1rem;
+    color: var(--copyright);
+    font-size: 1.5rem;
+    font-family: 'Ubuntu';
+    padding-left:1rem;
+    font-weight: bold;
+ 
+}
+.copyright{
+    padding: 1rem;
+    margin-top: 1rem;
+    margin-left: 1.5rem;
+    color: var(--copyright);
+}
+
+:root{
+    --black: #000000;
+    --white: #ffffff;
+    --minty: #93e9be;
+    --nminty: #6c1641;
+    --grey: #212529;
+    --lightgrey: grey ;
+    --lsblack: rgba(0,0,0,0.15);
+    --dswhite:rgba(255, 245, 245, 0.15);
+     
+}
+
+body[data-theme='light'] {
+    --navigationbg: var(--white);
+    --intext: var(--minty);
+    --clocktext: var(--black);
+    --panellogos: var(--minty);
+    --ftext: var(--black);
+    --copyright: var(--black);
+    --ldshadow: var(--lsblack);
+}
+
+body[data-theme='dark'] {
+    --navigationbg: var(--black);
+    --intext: var(--nminty);
+    --clocktext: var(--white);
+    --panellogos: var(--nminty);
+    --ftext: var(--white);
+    --copyright: var(--lightgrey);
+    --ldshadow: var(--dswhite);
+}
+
+* {
+    transition: background-color 0.3s ease, color 1s ease;
+  }
+
+  .container{
+      padding-top: 0;
+  }
+  

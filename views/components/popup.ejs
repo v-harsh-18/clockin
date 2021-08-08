@@ -1,0 +1,86 @@
+<div class="button">
+  <button class="btn-dark btn-lg btn" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+          <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+        </svg>
+      Create
+  </button>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Meeting</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/calendar" method="POST">
+            <div class="row Mname">
+              <label for="validationDefaultUsername" class="form-label">Meeting name</label>
+              <div class="input-group">
+                <input type="text" placeholder="title" name="title" class="form-control" id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" 
+                required>
+              </div>
+            </div>
+            <div class="row date">
+              <label for="validationDefault01" class="form-label">Start Date</label>
+              <div class="input-group">
+                  <input type="date" placeholder="start date" name="date" class="form-control" id="validationDefault01" required>
+              </div>
+            </div>
+            <div class="row date">
+              <label for="validationDefaultend" class="form-label">End Date</label>
+              <div class="input-group">
+                  <input type="date" placeholder="end date" name="until" class="form-control" id="validationDefaultend" required>
+              </div>
+            </div>
+            <div class="row time">
+              <label for="validationDefault02" class="form-label">Time</label>
+              <div class="input-group">
+                <input type="time" placeholder="time" name="time" class="form-control input-group" id="validationDefault02" required>
+              </div>
+            </div>
+            <div class="row Mlink">
+              <label for="validationDefault03" class="form-label">Meeting Link</label>
+              <div class="input-group">
+                <input type="text" placeholder="link" name="link" class="form-control input-group" id="validationDefault03">
+              </div>
+            </div>
+            <div class="row repeat">
+              <label for="validationDefault04" class="form-label">Frequency</label>
+              <div class="input-group">
+                <select class="form-select input-group" placeholder="repeat" name="repeat" id="validationDefault04" required>
+                    <option selected disabled value="">Choose...</option>
+                    <option value="none" name="none">None</option>
+                    <option name="daily" value="daily">Daily</option>
+                    <option name="weekly" value="weekly">Weekly</option>
+                    <option name="monthly" value="monthly">Monthly</option>
+                    <option name="yearly" value="yearly">Yearly</option>
+                  </select> 
+              </div>
+            </div>
+
+            <div class="row repeat">
+              <label for="validationDefaultdes" class="form-label">Description</label>
+              <div class="input-group">
+                <select class="form-select input-group" placeholder="description" name="description" id="validationDefaultdes" required>
+                    <option selected disabled value="">Choose...</option>
+                    <option value="none" name="none">None</option>
+                    <option name="official" value="official">Official Meeting</option>
+                    <option name="unofficial" value="unofficial">Unofficial Meeting</option>
+                    <option name="bday" value="bday">Birthday</option>
+                    <option name="misc" value="misc">Miscellaneous</option>
+                  </select> 
+              </div>
+            </div>
+
+          
+              <div id="savinser"></div>
+              <button id="save" class="btn btn-primary submit" type="submit" onclick="hideSave()">Save</button>
+            
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
