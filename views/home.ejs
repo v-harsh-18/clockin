@@ -26,13 +26,15 @@
             <img id="logo2" class="logo2" src="img/logo2.png">
         </div>
     </div>
-        
-        <div class="button">
-            <a class="btn-dark btn btn-lg" href="/auth/google" role="button">
-                <i class="fab fa-google"></i>
-                Sign In
-            </a>
-        </div>
+
+    
+
+    <div class="button" class="btn-dark btn btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <a class="btn-dark btn btn-lg" href="/auth/google" role="button">
+            <i class="fab fa-google"></i>
+            Sign In
+        </a>
+    </div>
 
 
 
@@ -162,7 +164,6 @@ const changeThemeToLight = () => {
 
 
 const checkbox = document.getElementById("checkbox");
-let bleh;
 checkbox.addEventListener('change', () => {
     let theme = localStorage.getItem('data-theme'); // Retrieve saved them from local storage
     if (theme ==='dark'){
@@ -170,7 +171,6 @@ checkbox.addEventListener('change', () => {
     }else{
         changeThemeToDark()
     }   
-    bleh = localStorage.getItem('data-theme');
 });
 
 function changing(){
@@ -184,6 +184,10 @@ function changing(){
     var video = document.getElementById('video-dark');
     video.src = "video/logo-dark-vid.mp4";
     document.getElementById("checkbox").checked = true;
+    }
+    else if(localStorage.getItem('data-theme')===null)
+    {
+        document.getElementById("HTML").setAttribute("data-theme", "light") ;
     }
 }
     </script>

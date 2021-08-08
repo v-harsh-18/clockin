@@ -30,9 +30,9 @@
               </div>
             </div>
             <div class="row date">
-              <label for="validationDefault01" class="form-label">End Date</label>
+              <label for="validationDefaultend" class="form-label">End Date</label>
               <div class="input-group">
-                  <input type="date" placeholder="end date" name="until" class="form-control" id="validationDefault01">
+                  <input type="date" placeholder="end date" name="until" class="form-control" id="validationDefaultend" required>
               </div>
             </div>
             <div class="row time">
@@ -62,9 +62,9 @@
             </div>
 
             <div class="row repeat">
-              <label for="validationDefault04" class="form-label">Description</label>
+              <label for="validationDefaultdes" class="form-label">Description</label>
               <div class="input-group">
-                <select class="form-select input-group" placeholder="description" name="description" id="validationDefault04" required>
+                <select class="form-select input-group" placeholder="description" name="description" id="validationDefaultdes" required>
                     <option selected disabled value="">Choose...</option>
                     <option value="none" name="none">None</option>
                     <option name="official" value="official">Official Meeting</option>
@@ -76,7 +76,7 @@
             </div>
 
           
-            
+              <div id="savinser"></div>
               <button id="save" class="btn btn-primary submit" type="submit" onclick="hideSave()">Save</button>
             
           </form>

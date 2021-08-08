@@ -18,6 +18,7 @@ nav{
     margin-top: 0px;
     position: fixed;
 }
+
 .shadow {
     box-shadow: 0 .5rem 1rem var(--ldshadow)!important;
 }
