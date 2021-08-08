@@ -176,10 +176,11 @@
                     eventClick: function (info) {
                         info.jsEvent.preventDefault();
                         var eventObj = info.event;
+                        let t=(new Date(eventObj.start)).toISOString({timeZone:'America/Chicago'});
                         console.log(eventObj.id);
                         document.getElementById('new').click();
                         document.getElementById('mtitle').innerHTML = "Event Title: " + eventObj.title;
-                        document.getElementById('mdate').innerHTML = "Event Date: " + eventObj.start;
+                        document.getElementById('mdate').innerHTML = "Event Start Date: " + t.substring(0,10)+' '+t.substring(11,19);
                         // document.getElementById('mtime').innerHTML = "Event Time: " + eventObj.time;
                         if(eventObj.url !== "")
                         {
