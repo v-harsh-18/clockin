@@ -18,7 +18,7 @@ const { MongoNetworkTimeoutError } = require('mongodb');
 
 const app = express();
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
     extended: true
@@ -93,7 +93,6 @@ passport.deserializeUser(function(id, done) {
 passport.use(new GoogleStrategy({
         clientID: process.env.CLIENT_ID,
         clientSecret: process.env.CLIENT_SECRET,
-        // callbackURL: "https://obscure-everglades-41187.herokuapp.com/auth/google/clockin",
 
         // callbackURL: "http://localhost:3003/auth/google/clockin",
         callbackURL: "https://clockin-india.herokuapp.com/auth/google/clockin",
