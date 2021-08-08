@@ -11,6 +11,8 @@ nav{
     width: 100%;
     margin-top: 0px;
 }
+
+
 .shadow {
     box-shadow: 0 .5rem 1rem var(--ldshadow)!important;
 }
@@ -243,6 +245,37 @@ nav{
         box-shadow: 0 -.25rem 1rem var(--ldshadow)!important;
     }
 
+    .fc .fc-more-popover .fc-popover-body{
+        background-color: var(--pluspopbg);
+    }
+
+    .fc .fc-popover-header{
+        background-color: var(--pophead);
+    }
+
+    .fc-h-event .fc-event-title-container {
+        background-color: #0d6dfd;
+        color: #ffffff;
+        border: #0d6dfd;
+    }
+
+    .fc-h-event .fc-event-time {
+        background-color: #0d6dfd;
+        border-color: #0d6dfd;
+    }
+
+    #inser{
+        text-align: center;
+        color: var(--vctext);
+        font-weight: bold;
+    }
+
+    #savinser{
+        text-align: center;
+        color: var(--vctext);
+        font-weight: bold;
+    }
+
     :root{
         --black: #000000;
         --white: #ffffff;
@@ -260,6 +293,8 @@ nav{
         --dswhite:rgba(255, 245, 245, 0.15);
         --ltoday: rgb(229, 255, 229);
         --dtoday: #743353;
+        --popgrey: #282828;
+        --pophgrey: #f0ebeb;
          
     } 
 
@@ -278,6 +313,8 @@ nav{
         --copyright: var(--black);
         --ldshadow: var(--lsblack);
         --todayc: var(--ltoday);
+        --pluspopbg: var(--white);
+        --pophead: var(--pophgrey);
     }
     
     
@@ -285,7 +322,7 @@ nav{
         --navigationbg: var(--black);
         --buttons: var(--nminty);
         --hbuttons: var(--nminty2);
-        --grid:var(--formgrey);
+        --grid:var(--black);
         --vctext: var(--lightgrey);
         --fcdate: var(--lightgrey);
         --fcmonth: var(--lightgrey);
@@ -296,6 +333,8 @@ nav{
         --copyright: var(--grey);
         --ldshadow: var(--dswhite);
         --todayc: var(--dtoday);
+        --pluspopbg: var(--popgrey);
+        --pophead: var(--black);
     }
     
     * {

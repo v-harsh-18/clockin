@@ -12,6 +12,17 @@ nav{
     width: 100%;
     margin-top: 0px;
 }
+
+.modal-backdrop {
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 1040;
+    width: 100vw;
+    height: 100vh;
+    background-color:#000000;
+}
+
 .shadow {
     box-shadow: 0 .5rem 1rem var(--ldshadow)!important;
 }

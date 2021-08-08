@@ -245,6 +245,29 @@ nav{
         background-color: var(--pophead);
     }
 
+    .fc-h-event .fc-event-title-container {
+        background-color: #0d6dfd;
+        color: #ffffff;
+        border: #0d6dfd;
+    }
+
+    .fc-h-event .fc-event-time {
+        background-color: #0d6dfd;
+        border-color: #0d6dfd;
+    }
+
+    #inser{
+        text-align: center;
+        color: var(--vctext);
+        font-weight: bold;
+    }
+
+    #savinser{
+        text-align: center;
+        color: var(--vctext);
+        font-weight: bold;
+    }
+
     :root{
         --black: #000000;
         --white: #ffffff;
