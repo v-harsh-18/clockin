@@ -10,10 +10,10 @@ The link for the website: https://clockin-india.herokuapp.com/
   
 ## Tech Stack
 
-NodeJS
-MongoDB
-Express
-PassportJS
+- NodeJS
+- MongoDB
+- Express
+- PassportJS
   
   
 ## Creators
