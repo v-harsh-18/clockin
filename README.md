@@ -25,6 +25,11 @@ The link for the website: https://clockin-india.herokuapp.com/
 - [Rashi Motwani](https://github.com/rashimotwani)
 - [Vanshika Tibrewal](https://github.com/vanshikaT2)
 
+## Mentors
+
+- [Dipin Garg](https://github.com/dgargdipin)
+- [Krishanu Saini](https://github.com/krishanu-2001)
+
 ## Demonstration and Presentation
 
 Complete Demonstration of ClockIn: 
