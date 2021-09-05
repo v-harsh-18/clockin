@@ -7,7 +7,7 @@ One of the biggest challenges that the covid pandemic introduced in our lives wa
 
 The link for the website: https://clockin-india.herokuapp.com/
 
-  
+
 ## Tech Stack
 
 - NodeJS
@@ -22,3 +22,10 @@ The link for the website: https://clockin-india.herokuapp.com/
 - [Harsh Verma](https://github.com/v-harsh-18)
 - [Rashi Motwani](https://github.com/rashimotwani)
 - [Vanshika Tibrewal](https://github.com/vanshikaT2)
+
+## Demonstration and Presentation
+
+Complete Demonstration of ClockIn: 
+
+https://user-images.githubusercontent.com/85797179/132132549-df1f48cf-db1b-4b64-a7c7-ff7765eddceb.mp4
+
